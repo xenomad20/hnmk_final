@@ -392,11 +392,13 @@ margin-top: 40px;
 				$("#notime-img").show();
 				
 		}
-		if(${movieOne.mno}!=null){
-			$("#"+${movieOne.mno}).css('background','#d8d9db');
-		}else if(${movieOne.mno}==null){
-			$("#"+${movieOne.mno}).css('background','white');
-		}
+		
+	var m = '<c:out value="${movieOne.mno}"/>';
+	if(m==m){
+		$("#"+m).css("background","#666666");
+		$("#"+m).css("color","white");
+	}
+	
 	});
 </script>
 </head>
