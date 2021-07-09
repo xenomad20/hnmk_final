@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+   <mapper namespace="kr.co.jhta.cinema.reserve">  	
+	
+	<!-- 예매내역 열람 -->
+	<select id="selectReserve" parameterType="cdto" resultType="rdto">
+		select ticketno,total,rno,customerno,ssno
+		from reserve
+		where customerno = #{customerno}
+	</select>
+	
+	<!-- 좌석 열람 -->
+	<select id="selectRd" parameterType="String" resultType="rdto">
+		select ticketno,substr(seatno,instr(seatno,'.')+1) as "seatno"
+		from reserve_detail
+		where ticketno = #{ticketno}
+	</select>
+	
+	<!-- 예매취소 reserve테이블 삭제 -->
+	<delete id="deleteReserve" parameterType="int">
+		delete from reserve
+		where customerno = #{customerno}
+	</delete>
+	
+	<!-- 예매취소 reserve_detail테이블 삭제 -->
+	<delete id="deleteRd" parameterType="String">
+		delete from reserve_detail
+		where ticketno = #{ticketno}
+	</delete>
+		
+	<!-- 예매취소 좌석 다시 선택가능으로 변경 -->
+	<update id="cancelSeatno" parameterType="String">
+		update screen_detail
+		set avail = 0
+		where seatno = #{seatno}
+	</update>
+	
+	
+  </mapper>

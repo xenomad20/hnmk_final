@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="kr.co.jhta.cinema">
+  	<!-- 예매 테이블 추가 -->
+  	<insert id="insertReserve" parameterType="rdto" >
+  		INSERT INTO reserve(ticketno,total,rno,customerno,ssno)
+  		VALUES(#{ticketno},#{total},TO_CHAR(sysdate,'YYYY-MM-DD'),#{customerno},#{ssno} )
+  	</insert>
+  	
+  	<!-- 예매 디테일 테이블 1명일때 추가 -->
+  	<insert id="insertReserveDt" parameterType="rdto">
+  		INSERT INTO reserve_detail(ticketno,seatno)
+  		VALUES(#{ticketno},#{seatno})
+  	</insert>
+
+  	<!-- 예매 디테일 테이블 2명이상일때 추가 -->
+  	<insert id="insertReserveDtArray" parameterType="rdto">
+  		INSERT INTO reserve_detail(ticketno,seatno)
+  		VALUES(#{ticketno},#{seatno})
+  	</insert>
+  	
+  	<!-- 좌석 예약좌석으로 바꿈 0=선택가능 1=거리두기좌석 2=예매완료 -->
+  	<update id="updateAvail" parameterType="String">
+  		UPDATE screen_detail
+  		set avail = 2
+  		where seatno =#{seatno}
+  	</update>
+  	
+  	<!-- 회원 포인트 update -->
+  	<update id="updatePoint" parameterType="cdto">
+  		UPDATE customer
+  		set point = #{point}
+  		where customerno = #{customerno}
+  	</update>
+  </mapper>

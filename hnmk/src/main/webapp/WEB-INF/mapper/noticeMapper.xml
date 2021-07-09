@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.jhta.cinema">
+
+	<!-- 고객센터 FAQ 모두 가져오기 -->
+	<select id="selectAll" resultType="ndto">
+		SELECT fno,ftype,ftitle,fcontents,fregdate,fpwd,fhits,customerno
+		FROM (SELECT fno,ftype,ftitle,fcontents,fregdate,fpwd,fhits,customerno
+			  FROM faq
+			  ORDER BY fno desc)
+		WHERE (ftype = '영화관 이용' or ftype = '관람권')
+
+	</select>
+
+	<!-- 고객센터 공지사항 모두 가져오기 -->
+	<select id="selectNoticeAll" resultType="ndto"
+		parameterType="se">
+		SELECT nno,ntitle,ncontents,nregdate,nhits,customerno
+		FROM (SELECT rownum rn, nno,ntitle,ncontents,nregdate,nhits,customerno
+		FROM (SELECT nno,ntitle,ncontents,nregdate,nhits,customerno
+		FROM notice
+		ORDER BY nno desc)
+		WHERE rownum &lt; = #{endNo})
+		WHERE rn &gt; = #{startNo}
+	</select>
+
+	<select id="noticeData" resultType="int">
+		SELECT count(*)
+		FROM notice
+	</select>
+
+	<!-- // 공지사항detail -->
+	<select id="noticeOne" resultType="ndto" parameterType="int">
+		SELECT nno, ntitle, ncontents, nregdate, nhits, customerno,id
+		FROM notice NATURAL JOIN customer
+		WHERE nno = #{nno}
+	</select>
+
+	<!-- important공지사항 -->
+	<select id="importantAll" resultType="ndto">
+		SELECT nno,ntitle,ncontents,nregdate,nhits,customerno
+		FROM notice
+		WHERE nno in (4,7)
+	</select>
+
+	<!-- 1:1문의 쓰기 -->
+	<insert id="writeOne" parameterType="ndto">
+		INSERT INTO faq
+		VALUES (FNO_SEQ.NEXTVAL, #{ftype}, #{ftitle}, #{fcontents}, sysdate,
+		#{fpwd}, 0 , #{customerno})
+	</insert>
+
+	<!-- 1:1문의 가져오기 -->
+	<select id="inquiryAll" resultType="ndto" parameterType="se">
+		SELECT fno,ftype,ftitle,fcontents,fregdate,fpwd,fhits,customerno
+		FROM (SELECT rownum rn,
+		fno,ftype,ftitle,fcontents,fregdate,fpwd,fhits,customerno
+		FROM (SELECT fno,ftype,ftitle,fcontents,fregdate,fpwd,fhits,customerno
+		FROM faq
+		ORDER BY fno desc)
+		WHERE rownum &lt; = #{endNo})
+		WHERE rn &gt; = #{startNo}
+		and ftype = '1:1문의'
+	</select>
+
+	<!-- 1:1문의 페이지가져오기 -->
+	<select id="inquiryData" resultType="int">
+		SELECT count(*)
+		FROM faq
+		WHERE ftype = '1:1문의'
+	</select>
+
+	<!-- 1:1문의 디테일페이지 보기 -->
+	<select id="inquiryOne" resultType="ndto" parameterType="int">
+		SELECT fno,ftype,ftitle,fcontents,fregdate,fpwd,fhits,customerno,id
+		FROM FAQ NATURAL JOIN customer
+		WHERE fno = #{fno}
+	</select>
+	
+	<!-- 1:1문의 댓글 보기 -->
+	<select id="answerAll" resultType="ndto">
+		select ano,acontents,aregdate,fno,customerno,id
+		from answer NATURAL JOIN customer
+		where fno = #{fno}
+		ORDER BY ano
+	</select>
+	
+	<!-- 1:1문의 댓글 달기 -->
+	<insert id="insertAnswer" parameterType="ndto">
+		INSERT INTO answer
+		VALUES(ANO_SEQ.NEXTVAL, #{acontents},sysdate,#{fno},#{customerno})
+	</insert>
+	
+	<!-- 1:1문의 수정하기 -->
+	<update id="updateInquiry" parameterType="ndto">
+		update faq
+		set ftitle = #{ftitle}, fcontents = #{fcontents}, fpwd =  #{fpwd}
+		where fno = #{fno}
+		and ftype = '1:1문의'
+	</update>
+	
+	<!-- 1:1문의 삭제하기 -->
+	<delete id="deleteInquiry" parameterType="ndto">
+		delete faq
+		where fno = #{fno}
+		and ftype = '1:1문의'
+	</delete>
+	
+	<!-- 1:1문의 조회수 -->
+	<update id="updateFAQHits" parameterType="int">
+         update faq
+         set FHITS = (select FHITS from faq where fno = #{fno})+1
+         where fno = #{fno}
+   </update>
+   
+   <!-- 공지사항 조회수 -->
+   <update id="updateNoticeHits" parameterType="int">
+         update notice
+         set NHITS = (select NHITS from notice where nno = #{nno})+1
+         where nno = #{nno}
+   </update>
+   
+   <!-- 1:1문의 비밀번호확인 -->
+   <select id="passChk"  parameterType="ndto" resultType="int">
+   		SELECT count(*)
+   		from faq
+   		where fpwd = #{fpwd}
+   		and fno = #{fno}
+   </select>
+   
+   
+
+
+</mapper>
+  

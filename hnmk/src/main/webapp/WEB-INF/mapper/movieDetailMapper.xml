@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+   <mapper namespace="kr.co.jhta.cinema">
+   <!-- movie, movie_Detail inner join-->
+   <select id="movieDetailOne" parameterType="int" resultType="mDIdto">
+  		select m.mno, m.mtitle, m.mtitleEng, m.genre, m.poster, m.mregdate,
+  		md.showtimes, md.showflag, md.filmgrade, md.releasedate, md.director, md.cast, md.mintroduction, md.mratings	
+  		from movie m, movie_detail md
+  		where m.mno=md.mno
+  		and m.mno=#{mno}
+  	</select>
+  	</mapper>

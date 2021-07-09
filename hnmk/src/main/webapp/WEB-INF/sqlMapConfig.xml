@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  <configuration>
+	<typeAliases>
+		<typeAlias type="kr.co.jhta.cinema.dto.MovieDTO" alias="mdto"/> <!-- movie 테이블 -->
+		<typeAlias type="kr.co.jhta.cinema.dto.TheaterDTO" alias="tdto"/> <!-- cinema 테이블  -->
+		<typeAlias type="kr.co.jhta.cinema.dto.ScreenDTO" alias="sdto"/> <!-- screen 테이블-->
+		<typeAlias type="kr.co.jhta.cinema.dto.ScheduleDTO" alias="schdto"/> <!-- screen_schedule 테이블--> 
+		<typeAlias type="kr.co.jhta.cinema.dto.SeatDTO" alias="seatdto"/> <!-- screen_detail 테이블-->
+		<typeAlias type="kr.co.jhta.cinema.dto.MovieDetailDTO" alias="mDdto"/>
+		<typeAlias type="kr.co.jhta.cinema.dto.MovieDetailInfoDTO" alias="mDIdto"/> <!-- movie_detail 테이블 -->
+		<typeAlias type="kr.co.jhta.cinema.dto.MovieInfoDTO" alias="midto"/> 
+		<typeAlias type="kr.co.jhta.cinema.dto.CustomerDTO" alias="cdto"/> <!-- 회원 -->
+		<typeAlias type="kr.co.jhta.cinema.dto.HomeDTO" alias="hdto"/> <!-- 홈 -->
+		<typeAlias type="kr.co.jhta.cinema.dto.ReserveDTO" alias="rdto"/> <!-- reserve , reserve_detail 테이블-->
+		<typeAlias type="kr.co.jhta.cinema.dto.NoticeDTO" alias="ndto"/><!-- 고객센터 -->
+		<typeAlias type="kr.co.jhta.cinema.dto.StartEnd" alias="se"/> <!-- 페이지 개수 표시 -->
+	</typeAliases>   
+  </configuration>

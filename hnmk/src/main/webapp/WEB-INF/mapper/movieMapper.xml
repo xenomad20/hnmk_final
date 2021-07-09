@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+  <mapper namespace="kr.co.jhta.cinema">
+     <select id="movieAll" resultType="mdto">
+        SELECT mno,mtitle,mtitleeng,genre,poster,mregdate 
+        from movie
+        <where>
+           <if test="mno != null">
+              mno = #{mno}
+           </if>
+        </where>
+     </select>
+     
+     <select id="movieBox" resultType="mdto">
+         select m.mtitle
+        from movie m , movie_detail md
+           where m.mno = md.mno
+          order by md.mratings desc
+     </select>
+     <select id="showMovie" resultType="midto">
+        select mno, mtitle, mtitleeng, releasedate, poster, mintroduction, filmgrade
+        from movie NATURAL JOIN movie_detail
+        <where>
+              showflag = #{showflag}
+        </where>
+     </select>
+  </mapper>

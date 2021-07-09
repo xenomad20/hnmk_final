@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+body {
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+div {
+	display: block;
+}
+
+a {
+	text-decoration: none;
+}
+
+.contents {
+	width: 1100px;
+	margin: 0 auto;
+	padding: 50px 0 0 0;
+}
+
+.title_top {
+	margin-bottom: 20px;
+	padding: 25px 0 14px;
+	border-bottom: 1px solid #EEE;
+	background-color: silver;
+}
+
+.title_top h1 {
+	text-align: center;
+	font-size: 24px;
+}
+
+.tab_wrap {
+	padding-top: 20px;
+	height: 80px;
+	position: relative;
+	box-sizing: initial;
+}
+
+.tab_wrap ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+
+.tab_wrap li {
+	display: list-item;
+	text-align: center;
+}
+
+.tab_tit {
+	width: 33.3%;
+	left: 0%;
+	line-height: 50px;
+	font-size: 30px;
+	border: none;
+	top: 0;
+	cursor: pointer;
+	float: left;
+	height: 77px;
+}
+
+.tab_inquiry {
+	text-align: center;
+	padding: 0 25px;
+	margin: 0 auto;
+	background-color: #F8F8F8;
+}
+
+.tab_inquiry p {
+	margin-bottom: 10px;
+	display: block;
+}
+
+.tab_inquiry a {
+	color: #000;
+	text-decoration: underline;
+	margin-right: 24px;
+}
+/* tabs에 important번호 이미지 */
+.notice_important strong{
+		display: inline-block;
+	    width: 16px;
+	    height: 16px;
+	    margin-left: 5px;
+	    vertical-align: middle;
+	    background-image: url("https://www.lottecinema.co.kr/NLCHS/Content/images/icon/caution_15_2.png");
+}
+#important a{
+	color: #ff0000;
+}
+.notice_tit a{
+	color: #000;
+}

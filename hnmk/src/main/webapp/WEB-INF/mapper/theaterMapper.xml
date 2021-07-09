@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.jhta.cinema">
+	<!-- 영화관 전체조회 / 영화관 1건조회 -->
+	<select id="theaterAll" resultType="tdto">
+		SELECT cno,location,cimg,caddress,cdescript
+		from cinema
+		<choose>
+			<when test="cno != null">
+				where cno = #{cno}
+			</when>
+			<when test="location != null">
+				where location = #{location}
+			</when>
+			<otherwise></otherwise>
+		</choose>
+	</select>
+	<!-- 상영관 전체조회 / 영화관기준으로조회 -->
+	<select id="screenAll" resultType="sdto">
+		SELECT sname,emptyseat,totalseat,cno
+		from screen
+		<where>
+			<if test="cno != null">
+				cno = #{cno}
+			</if>
+		</where>
+	</select>
+	<!-- 상영스케줄조회 영화번호,상영관기준 -->
+	<select id="scheduleMnoSname" parameterType="schdto"
+		resultType="schdto">
+		SELECT ssno,ssdate,starttime,endtime,mno,sname
+		from screen_schedule
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="mno != null">mno = #{mno}</if>
+			<if test="sname != null">AND sname = #{sname}</if>
+		</trim>
+		order by ssno asc
+	</select>
+
+	<!-- 좌석조회 상영관기준 좌석번호는 문자열자르기로 -->
+	<select id="seatScreen" parameterType="String" resultType="seatdto">
+		SELECT substr(seatno,instr(seatno,'.')+1) as "seatno",avail,sname
+		FROM screen_detail
+		WHERE sname = #{sname}
+		order by seatno asc
+	</select>
+	
+	<!-- 상영일정번호로 상영일정 -->
+	<select id="scheduleAll" parameterType="int" resultType="schdto">
+		SELECT ssno,ssdate,starttime,endtime,mno,sname
+		from screen_schedule
+		<where>
+			<if test="ssno != null">
+				ssno = #{ssno}
+			</if>
+		</where>		
+	</select>
+	
+</mapper>

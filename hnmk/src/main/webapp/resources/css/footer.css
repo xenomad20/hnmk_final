@@ -1,0 +1,101 @@
+@charset "UTF-8";
+	.footer {
+		box-sizing: border-box;
+	}
+	.footer div{
+		display: block;
+	}
+	footer{
+		position: relative;
+		display: block;
+		min-width: 1100px;
+		width: 100%;
+		height: 200px;
+		margin: 0;
+		padding: 0;
+	}
+	footer p {
+		margin: 0;
+		padding: 0;
+	}
+	.footer-top{
+		overflow: hidden;
+		width: 1100px;
+		margin: 0 auto;
+		padding: 30px 0;
+	}
+	.inner-wrap{
+		width: 1100px;
+		margin: 0 auto;
+	}
+	.inner-wrap ul{
+		background-color : white;
+		float: left;
+		list-style-type: none;
+		margin: 0;
+		padding: 0;
+		display: block;
+	}
+	.inner-wrap ul li{
+		float: left;
+		margin-left: 14px;
+		
+	}
+	.inner-wrap ul li a{
+		display: block;
+		line-height: 30px;
+	}
+	.searchButton{
+		overflow: hidden;
+		float: right;
+		display: block;
+		margin: 0;
+		padding: 0;
+		text-align: center;
+		text-decoration: none;
+	}
+	.footer-bottom{
+		overflow: hidden;
+		width: 1100px;
+		margin: 0 auto;
+		padding: 0;
+	}
+	.footer-logo{
+		overflow: hidden;
+		display: block;
+		float: left;
+		width: 150px;
+		height: 50px;
+		margin: 0 20px 0 0 ;
+		padding: 0;
+		background: url("이미지사진") no-repeat center;
+	}
+	.footer-info{
+		/* float: left; */
+		font-size: .8667em;
+		letter-spacing: 0;
+	}
+	.footer-info div address{
+		display: inline-block;
+		vertical-align: top;
+		margin: 0;
+		padding: 0;
+	}
+	.footer-info div p{
+		display: inline-block;
+		vertical-align: top;
+	}
+	.copy{
+		display: block;
+	}
+	.footer-sns{
+		float: right;
+	}
+	.footer-sns a{
+		display: block;
+		float: left;
+		width: 32px;
+		height: 30px;
+		margin-left: 5px;
+		
+	}
