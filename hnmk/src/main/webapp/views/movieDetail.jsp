@@ -26,7 +26,7 @@
 			<div class="top_line">
 				<ul>
 					<c:set var="path" value="${pageContext.request.contextPath}" />
-					<li><a href="">홈</a></li>
+					<li><a href="${path}/home">홈</a></li>
 					<li>&nbsp; 	&gt; &nbsp;</li>
 					<li><a href="${path}/movie">영화</a></li>
 					<li>&nbsp; 	&gt; &nbsp;</li>
