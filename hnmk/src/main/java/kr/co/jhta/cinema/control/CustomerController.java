@@ -62,14 +62,14 @@ public class CustomerController {
 	}
 
 	// 로그인
-	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String login(@ModelAttribute CustomerDTO id, HttpSession session, HttpServletResponse response)
 			throws Exception {
 
 		session.setAttribute("id", id.getId());
 
 		System.out.println("로그인=============================================");
-		return "loginHome";
+		return "redirect:home";
 	}
 
 	// 로그아웃
