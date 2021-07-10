@@ -196,7 +196,7 @@ main{
 	width: 80px;
 	height: 120px;
 	position: relative;
-	bottom: 75px;
+	bottom: 81px;
 	left: 50px;
 }
 
@@ -251,7 +251,7 @@ main{
 #page {
 	margin: 0px auto;
 	width: 310px;
-	margin-top: 15px;
+	margin-top: 12px;
 	text-align: center;
 }
 
@@ -260,7 +260,7 @@ main{
 	width: 155px;
 	height: 50px;
 	background-color: #53565b;
-	padding-top: 5px;
+	padding-top: 1px;
 }
 
 #after {
@@ -268,7 +268,7 @@ main{
 	width: 155px;
 	height: 50px;
 	background-color: #E0E0E0;
-	padding-top: 5px;
+	padding-top: 1px;
 }
 
 #before-bt {
@@ -304,7 +304,7 @@ main{
 	bottom: 100px;
 	right: 24px;
 	border-radius: 10px 10px 0px 0px;
-	width: 200px;
+	width: 230px;
 	height: 32px;
 	background-color: #503396;
 }
@@ -338,7 +338,7 @@ main{
 }
 
 .modal {
-	width: 200px;
+	width: 230px;
 	height: 160px;
 	border-radius: 10px;
 	padding: 80px 24px;
@@ -391,6 +391,13 @@ text-align:center;
 	font-size: 15px;
 	border: none;
 }
+#filmgrade{
+   width: 23px;
+   height: 23px;
+	position: relative;
+	top:3px;
+	right:3px;
+}
 </style>
 <script type="text/javascript">
 	var no = 0; //onclick함수 밖에서 성인과 청소년 인원수의 합을 담을 전역변수
@@ -418,6 +425,7 @@ text-align:center;
 				action_popup.alert("인원 선택은 총 4명까지 가능합니다.");
 				$(".modal_close").on("click", function() {
 					action_popup.close(this);
+					$(".modal_close").attr('onclick',"").unbind('click');
 				});
 			}
 		} else if (type == 'minus') {
@@ -451,6 +459,7 @@ text-align:center;
 				action_popup.alert("인원 선택은 총 4명까지 가능합니다.");
 				$(".modal_close").on("click", function() {
 					action_popup.close(this);
+					$(".modal_close").attr('onclick',"").unbind('click');
 				});
 			}
 		} else if (type == 'minus') {
@@ -724,7 +733,7 @@ text-align:center;
 						if (naverpop == null || naverpop.closed) {
 							window.clearInterval(interval);
 									//결제창 닫은후 모달창
-									action_popup.alert("결제가 완료되었습니다.");
+									action_popup.alert("예매가 완료되었습니다.");
 									$(".modal_close").on("click", function() {
 										action_popup.close(this);
 										$("#form").submit();
@@ -826,7 +835,7 @@ text-align:center;
 		</div>
 		<div id=container-right>
 			<div id="title-area">
-				<p id="movie-title">${movieOne.mtitle}</p>
+				<p id="movie-title"><img id="filmgrade" src="resources/images/${mdidto.filmgrade}2.png" alt="" />${movieOne.mtitle}</p>
 			</div>
 			<div id="desc-area">
 				<p class="desc-p">${theaterOne.location}</p>

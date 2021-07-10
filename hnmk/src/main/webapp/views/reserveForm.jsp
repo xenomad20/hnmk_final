@@ -27,9 +27,9 @@ main{
 	margin-top:30px;
 	margin-bottom:30px;
 }
-
+#container{background-color:#FDFCF0}
 #container-header {
-	width: 1105px;
+	width: 1100px;
 }
 
 #container-center {
@@ -53,14 +53,16 @@ img.ui-datepicker-trigger {
 }
 
 #header-title {
+	padding-top:10px;
 	font-size: 15px;
 	margin-bottom:25px;
 }
 
 #date-schedule {
+	background-color:white;
 	width: 100%;
 	height: 53px;
-	border: 1px solid black;
+	border: 1px solid #760C0C;
 }
 
 .schedule-bt {
@@ -75,7 +77,7 @@ img.ui-datepicker-trigger {
 
 .center-section {
 	float: left;
-	border: 1px solid #d8d9db;
+	border: 1px solid #760C0C;
 	height: 580px;
 }
 
@@ -102,7 +104,7 @@ img.ui-datepicker-trigger {
 .list-button {
 	position: relative;
 	left: 24px;
-	margin-bottom: 10px;
+		margin-bottom: 10px;
 	width: 115px;
 	height: 30px;
 	background: transparent;
@@ -155,7 +157,7 @@ img.ui-datepicker-trigger {
 }
 
 #movie-list::-webkit-scrollbar-track {
-	background-color: grey;
+	background-color: #760C0C;
 	border-radius: 10px;
 	box-shadow: inset 0px 0px 5px white;
 }
@@ -182,7 +184,7 @@ img.ui-datepicker-trigger {
 }
 
 #movie-toplist::-webkit-scrollbar-track {
-	background-color: grey;
+	background-color: #760C0C;
 	border-radius: 10px;
 	box-shadow: inset 0px 0px 5px white;
 }
@@ -285,14 +287,13 @@ padding-top:5px;
 .td {
 	position: relative;
 	top: 4px;
-	padding-left: 25px;
+	padding-left: 30px;
 	font-size: 15px;
 }
 
 .schedule-list {
 	padding-left: 21px;
-	padding-top:5px;
-	padding-bottom:10px;
+	padding-bottom:15px;
 	
 }
 /*상영일정 div에 스크롤을 추가하려는데 반영이안됨 */
@@ -300,25 +301,9 @@ padding-top:5px;
 	width: 440px;
 	height: 280px;
 	padding-left:10px;
-	margin-bottom:30px;
+	position: relative;
+	bottom:26px;
 }
-
-#time-list::-webkit-scrollbar {
-	width: 10px;
-}
-
-#time-list::-webkit-scrollbar-thumb {
-	background-color: #2f3542;
-	border-radius: 10px;
-	background-clip: padding-box;
-	border: 2px solid transparent;
-}
-
-#time-list::-webkit-scrollbar-track {
-	background-color: grey;
-	border-radius: 10px;
-	box-shadow: inset 0px 0px 5px white;
-} 
 
 .desc-empty {
 	margin-top: 40px;
@@ -341,6 +326,11 @@ padding-left:30px;
 margin-top: 40px;
 	font-weight:bold;
 	text-align: center;
+}
+#filmgrade{
+   width: 23px;
+   height: 23px;
+   position: absolute;
 }
 </style>
 <script type="text/javascript">
@@ -392,17 +382,26 @@ margin-top: 40px;
 				$("#notime-img").show();
 				
 		}
-		if(${movieOne.mno}!=null){
-			$("#"+${movieOne.mno}).css('background','#d8d9db');
-		}else if(${movieOne.mno}==null){
-			$("#"+${movieOne.mno}).css('background','white');
-		}
+		
+	var m = '<c:out value="${movieOne.mno}"/>';
+	if(m==m){
+		$("#"+m).css("background","#F8EFCE");
+		$("#"+m).css("color","black");
+	}
+	
+	var c = '<c:out value="${reserveCheck}"/>';
+	if(c!=""){
+		
+		alert("      이미 예매한 티켓이 있습니다.\n  마이페이지에서 예매내역을 확인해주세요.");
+		location.href="mypageForm.do";
+	}
 	});
 </script>
 </head>
 <body>
   <main>
 		<div id="container">
+		
 			<div id="container-header">
 				<div id="header-title">
 					<h2>빠른예매</h2>
