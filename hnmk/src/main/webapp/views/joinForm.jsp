@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ include file="/views/header.jsp" %>
 
 <!DOCTYPE html>
 <html>
@@ -122,21 +123,70 @@
 	
 	</script>
 
+<style>
+
+* {
+  box-sizing: border-box;
+  font-family: 'Noto Sans KR', sans-serif;
+  border-radius: 5px;
+}
+ 
+#agreementDiv {
+	width: 1100px;
+    heignt: 400px;
+    background-color: #fdfcf0;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px;
+    text-align: left;
+    border: none; 
+}
+
+#joinInfoDiv {
+    width: 1100px;
+    heignt: 400px;
+    background-color: #fdfcf0;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 20px;
+    text-align: left;
+    border: none;   
+}
+
+#registerbtn {
+	width: 200px;
+	height: 25px;
+	margin-top: 20px;
+	margin-left: 30px;
+	alignment: center;
+}
+
+#registerbtn {
+	margin-left: 700px;
+}
+
+</style>
+
 </head>
 <body>
-	<div class="join-form">
+	<main>
+	<div id="join-form">
 		<br>
 		<br>
-		<b><font size="6" color="gray">회원가입</font></b>
-		<br>
-		<br>
-		<form id="joinForm" action="/hnmk_cinemaaa/joinProc.do" method="get">
+		<form id="joinForm" action="/hnmk/joinProc.do" method="get">
 
 		<!-- 약관동의 division -->
 		<div id="agreementDiv">
+			<b><font size="6" color="gray">회원가입</font></b>
+			<br>
+			<br>
 			<b><font size="4">1. 약관 동의</font></b>
 			<br>
-			<textarea name="agreeContents" form="inform" cols="60" rows="10">제 1조. 목적 
+			<textarea name="agreeContents" form="inform" cols="170" rows="10">제 1조. 목적 
 본 약관은 HNMK시네마(주)(이하 “회사”라 합니다)가 제공하는 온라인, 오프라인 서비스(이하 "서비스"라 합니다) 이용과 관련하여 회사와 이용자의 권리, 의무 및 책임사항을 규정함을 목적으로 합니다. 
 
 제 2조. 약관의 효력 및 변경 
@@ -147,8 +197,6 @@
 			<br>
 			<input type="checkbox" id="agreement" name="agreement" />약관에 동의합니다.
 		</div>
-		<br>
-		<br>
 		
 		<!-- 회원정보 division -->
 		<div id="joinInfoDiv">
@@ -221,11 +269,16 @@
 					
 				</table>
 			</div>			
-			<br>
-			<div class="btn-center">			
-				<input type="button" class="btn" value="가입하기" onclick="checkValue()" />
+			<div id="registerbtn">			
+				<input type="button" value="가입하기" style="width: 500px; height: 30px;"onclick="checkValue()" />
 			</div>
+			<br>
+			<br>
+			<br>
+			<br>
 		</form>
 	</div>
+	</main>
+	<%@ include file="/views/footer.jsp" %>
 </body>
 </html>

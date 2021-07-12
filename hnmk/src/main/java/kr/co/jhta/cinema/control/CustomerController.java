@@ -81,7 +81,7 @@ public class CustomerController {
 		session.invalidate();
 
 		System.out.println("로그아웃=============================================");
-		return "loginForm";
+		return "redirect:home";
 	}
 
 	// 회원가입폼으로 이동
@@ -99,7 +99,7 @@ public class CustomerController {
 		cs.joinCustomer(dto);
 
 		System.out.println("회원등록=============================================");
-		return "joinWelcome";
+		return "redirect:home";
 	}
 
 	// 회원등록시 아이디 중복체크
