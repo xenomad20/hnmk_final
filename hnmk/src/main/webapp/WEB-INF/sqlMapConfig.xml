@@ -13,6 +13,7 @@
 		<typeAlias type="kr.co.jhta.cinema.dto.MovieDetailDTO" alias="mDdto"/>
 		<typeAlias type="kr.co.jhta.cinema.dto.MovieDetailInfoDTO" alias="mDIdto"/> <!-- movie_detail 테이블 -->
 		<typeAlias type="kr.co.jhta.cinema.dto.MovieInfoDTO" alias="midto"/> 
+		<typeAlias type="kr.co.jhta.cinema.dto.CommentDTO" alias="comedto"/> <!-- comment 테이블  -->
 		<typeAlias type="kr.co.jhta.cinema.dto.CustomerDTO" alias="cdto"/> <!-- 회원 -->
 		<typeAlias type="kr.co.jhta.cinema.dto.HomeDTO" alias="hdto"/> <!-- 홈 -->
 		<typeAlias type="kr.co.jhta.cinema.dto.ReserveDTO" alias="rdto"/> <!-- reserve , reserve_detail 테이블-->
