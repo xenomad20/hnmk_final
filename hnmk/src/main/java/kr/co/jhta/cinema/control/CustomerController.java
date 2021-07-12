@@ -21,10 +21,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.co.jhta.cinema.dto.CustomerDTO;
 import kr.co.jhta.cinema.dto.MovieDTO;
+import kr.co.jhta.cinema.dto.NoticeDTO;
 import kr.co.jhta.cinema.dto.ReserveDTO;
 import kr.co.jhta.cinema.dto.ScheduleDTO;
 import kr.co.jhta.cinema.service.CustomerService;
 import kr.co.jhta.cinema.service.MovieService;
+import kr.co.jhta.cinema.service.NoticeService;
 import kr.co.jhta.cinema.service.ReserveService;
 import kr.co.jhta.cinema.service.TheaterService;
 
@@ -42,7 +44,7 @@ public class CustomerController {
 	
 	@Autowired 
 	MovieService ms;
-
+	
 	// 홈으로 이동
 	@RequestMapping(value = "/loginHome.do", method = RequestMethod.GET)
 	public String loginHome(@ModelAttribute CustomerDTO id, HttpSession session, HttpServletResponse response)
@@ -119,6 +121,10 @@ public class CustomerController {
 			//회원정보들
 			CustomerDTO cdto= cs.selectInfo(id);
 			model.addAttribute("cdto", cdto);
+			
+			//문의내역
+			List<NoticeDTO> nlist = rs.selectFAQ(cdto.getCustomerno());
+			model.addAttribute("nlist", nlist);
 			
 			//예매정보들을 각각 모아옴
 			

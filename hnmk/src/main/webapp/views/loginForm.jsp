@@ -19,7 +19,7 @@
 table {
     width: 300px;
     heignt: 400px;
-    background-color: #EEEFF1;
+    background-color: #fdfcf0;
     margin-right: auto;
     margin-left: auto;
     margin-top: 50px;
