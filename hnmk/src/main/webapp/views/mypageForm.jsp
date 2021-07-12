@@ -151,13 +151,14 @@ height:200px;
 	$(function(){
 		$("#cancel").click(function(){
 			var result = confirm("예매를 취소하시겠습니까?");			
-		})
 		
 		if(result){
-			form.submit();
+			$("#form").submit();
 		}else{
-			window.location.href="mainpage.Form.do";
+			window.location.href="mypageForm.do";
 		}
+		
+		});
 	});
 	
 </script>
