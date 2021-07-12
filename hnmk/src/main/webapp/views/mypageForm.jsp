@@ -264,11 +264,11 @@ li a:hover {
 
 						<tr>
 
-							<td id="use"><br>이름: ${cdto.name } <br>
+							<td id="use"><br>이름:    ${cdto.name } <br>
 							<br> 생년월일: ${cdto.birth}<br>
 							<br> 휴대전화: ${cdto.hp} <br>
 							<br>이메일: ${cdto.email}<br>
-							<br> 주소: ${cdto.addres}</td>
+							<br> 주소:     ${cdto.addres}</td>
 
 							<td class="" height="100px"><button type="button"
 									onclick="fn_move('1')">예매 티켓</button>
