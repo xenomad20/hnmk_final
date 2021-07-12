@@ -30,6 +30,15 @@
 	margin: 0 auto;
 }
 
+img {
+	width: 1100px;
+	height: 500px;
+}
+
+div {
+	margin-bottom: 20px;
+}
+
 .address {
 	margin-top: 10px;
 	display: flex;
