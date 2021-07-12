@@ -91,7 +91,7 @@
                     <ul class="menu-bottom">
                         <li><a href="/hnmk/movie"><font color="white">영화</font></a></li>
                         <li><a href="/hnmk/reserve"><font color="white">예매</font></a></li>
-                        <li><a href="/hnmk/theater"><font color="white">극장</font></a></li>
+                        <li><a href="/hnmk/theater?cno=1"><font color="white">극장</font></a></li>
                         <li><a href="/hnmk/notice.do"><font color="white">고객센터</font></a></li>
                     </ul>
             </div>
