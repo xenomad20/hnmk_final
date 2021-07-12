@@ -13,13 +13,17 @@ body{
 	height: 30px;
 	background-color: black;
 	color: white;
+	display: table-cell;
+	vertical-align: middle;
 }
 ul{
 	list-style: none;
 }
 li{
 	float:left;
+	margin-left: 5px;
 }
+
 li a{
 	color: white;
 }
@@ -228,3 +232,16 @@ select:focus {
       margin-left: 100%; }
     .tabs .tab-2:last-child [type="radio"]:checked + div {
       margin-left: -100%; }
+      
+      
+  #review{
+  	width: 600px;
+  	height: 30px;
+  }
+  #btn{
+  	background-color: red;
+  	color: white;
+  	width:50px;
+  	border-style: none;
+  	height: 30px;
+  }

@@ -20,8 +20,8 @@ public class CommentDAOImple implements CommentDAO {
 	private SqlSession ss;
 	
 	@Override
-	public List<CommentDTO> readAll() {
-		return ss.selectList("kr.co.jhta.cinema.commentAll");
+	public List<CommentDTO> readAll(int mno) {
+		return ss.selectList("kr.co.jhta.cinema.commentAll", mno);
 	}
 
 	@Override

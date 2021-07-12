@@ -26,11 +26,11 @@
 			<div class="top_line">
 				<ul>
 					<c:set var="path" value="${pageContext.request.contextPath}" />
-					<li><a href="${path}/home">홈</a></li>
-					<li>&nbsp; 	&gt; &nbsp;</li>
-					<li><a href="${path}/movie">영화</a></li>
-					<li>&nbsp; 	&gt; &nbsp;</li>
-					<li>영화상세</li>
+					<li class="top_line_li"><a href="${path}/home">홈</a></li>
+					<li class="top_line_li">&gt;</li>
+					<li class="top_line_li"><a href="${path}/movie">영화</a></li>
+					<li class="top_line_li">&gt;</li>
+					<li class="top_line_li">영화상세</li>
 				</ul>			
 			</div>
 		</div>
@@ -85,8 +85,11 @@
 				   <div>
 				     <h4>감상평을 남겨주세요!</h4>
 				     <p>평점 :  ${mdList.mratings }</p>
-				     <p><input type="text" name="review" id="review" />
-				     	<input type="button" value="작성" />
+				     <p>
+				     <input type="text" name="review" id="review" placeholder="타인을 비방하거나 스포일러는 삭제 될 수 있음으로 유의해주세요." />
+				     <input type="button" id="btn" value="작성" />
+				     </p>
+				     <p>
 				     </p>
 				   </div>
 			  	</div>

@@ -9,10 +9,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.jhta.cinema.dto.CommentDTO;
 import kr.co.jhta.cinema.dto.MovieDTO;
 import kr.co.jhta.cinema.dto.MovieDetailDTO;
 import kr.co.jhta.cinema.dto.MovieDetailInfoDTO;
 import kr.co.jhta.cinema.dto.MovieInfoDTO;
+import kr.co.jhta.cinema.service.CommentService;
 import kr.co.jhta.cinema.service.MovieDetailService;
 import kr.co.jhta.cinema.service.MovieService;
 import lombok.Setter;
@@ -24,6 +26,8 @@ public class MovieController {
 	MovieService ms;
 	@Autowired
 	MovieDetailService mds;
+	@Autowired
+	CommentService cs;
 	
 	@RequestMapping("/movie")
 	public String movieShow(Model model) {
@@ -51,10 +55,14 @@ public class MovieController {
 		} else {
 			int no = Integer.parseInt(mno);
 			MovieDetailInfoDTO mdList = mds.readDetailOne(no);
-		
-			model.addAttribute("mdList", mdList);
+			List<CommentDTO> cList = cs.readAll(no);
+			//comment가 없을 때
 			
+			
+			model.addAttribute("mdList", mdList);
+			model.addAttribute("cList", cList);
 		}
+		
 		
 		return "/movieDetail";
 	}
