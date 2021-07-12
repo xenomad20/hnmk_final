@@ -35,4 +35,10 @@
   		set point = #{point}
   		where customerno = #{customerno}
   	</update>
+  	
+  	<!-- 나의 문의 내역 -->
+  	<select id="selectFAQ" parameterType="int" resultType="ndto">
+  		select * from faq
+  		where customerno = #{customerno}
+  	</select>
   </mapper>

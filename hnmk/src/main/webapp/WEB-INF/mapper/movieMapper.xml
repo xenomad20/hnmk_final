@@ -15,7 +15,7 @@
      </select>
      
      <select id="movieBox" resultType="mdto">
-         select m.mtitle
+         select m.mtitle,m.mno
         from movie m , movie_detail md
            where m.mno = md.mno
           order by md.mratings desc

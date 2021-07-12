@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.jhta.cinema.dto.CustomerDTO;
+import kr.co.jhta.cinema.dto.NoticeDTO;
 import kr.co.jhta.cinema.dto.ReserveDTO;
 
 @Repository
@@ -57,6 +58,11 @@ public class ReserveDAOImple implements ReserveDAO {
 	@Override
 	public void cancelSeatno(String seatno) {
 		ss.update("kr.co.jhta.cinema.reserve.cancelSeatno", seatno);
+	}
+
+	@Override
+	public List<NoticeDTO> selectFAQ(int customerno) {
+		return ss.selectList("kr.co.jhta.cinema.selectFAQ",customerno);
 	}
 	
 	
