@@ -20,111 +20,124 @@
 
 main {
 	width: 1100px;
-	height: 1500px;
+	height: 1800px;
 	margin: 0 auto;
-	margin-top: 30px;
 	margin-bottom: 30px;
 }
 
 #table1 {
-	background-color: #f3f4f6;
+margin-top:30px;
+padding-top:30px;
+font-weight:bold;
+font-size:20px;
+	background-color: #FDFCF0;
 	width: 1100px;
 	height: 300px;
 	text-align: center;
 	margin: auto;
 	border-color: #861617;
-	border-top: 1px solid;
-	border-bottom: 1px solid;
+	border-top: 1px solid ;
+	border-bottom: 1px solid ;
 	border-collapse: collapse;
 }
 
 #table2 {
-	border-top: 1px solid;
-	border-bottom: 1px solid;
+
+	background-color: #FDFCF0;
 	border-collapse: collapse;
-	text-align: left;
+	text-align:center;
 	color: black;
-	font-size: 20px;
+	font-size: 17px;;
 	width: 1100px;
-	height: 300px;
+	height: 200px;
 	margin: auto;
-	background-color: #f3f4f6;
 	margin-bottom: 30px;
-	margin-top: 30px;
+	border-top: 1px solid ;
+	border-bottom: 1px solid ;
 }
 
+#table3{
+	border-top: 1px solid ;
+	border-bottom: 1px solid ;
+	border-collapse: collapse;
+background-color: #FDFCF0;
+	width: 1100px;
+	height: 300px;
+	text-align: center;
+	margin: auto;
+	margin-bottom: 30px;
+}
 #table4 {
+	border-top: 1px solid ;
+	border-bottom: 1px solid ;
+	border-collapse: collapse;
+background-color: #FDFCF0;
 	width: 1100px;
 	height: 300px;
 	text-align: center;
 	margin: auto;
 }
 
-#r1 {
-	padding-top: 50px;
-	padding-left: 40px;
-	float: left;
-}
-
-#r2 {
-	padding-top: 50px;
-	padding-left: 330px;
-	float: left;
-}
-
-#r3 {
-	padding-left: 40px;
-	padding-bottom: 40px;
-	float: left;
-}
-
-#r4 {
-	padding-left: 310px;
-	padding-bottom: 40px;
-	float: left;
-}
-
-#r5 {
-	padding-left: 40px;
-	float: left;
-	padding-bottom: 50px;
-}
-
-#r6 {
-	padding-left: 30px;
-}
-
-#r7 {
-	padding-right: 30px;
-}
-
-#r8 {
-	padding-left: 30px;
-}
-
-#r9 {
-	padding-right: 30px;
-}
-
-#r10 {
-	padding-left: 30px;
+#no{
+text-align: center;
 }
 
 button {
+
 	font-size: 16px;
 	background: transparent;
+	cursor: pointer;
 	border: 0px;
 	outline: 0px;
-	cursor: pointer;
 }
 
 #b {
 	font-size: 16px;
 	background: transparent;
+	cursor: pointer;
 	border: 0px;
 	outline: 0px;
-	cursor: pointer;
+	padding-bottom:40px;
 }
+.img-title{
+width:75px;
+height:75px;
+}
+.top_line{
+	width: 1100px;
+	height: 30px;
+	background-color: #FDFCF0;
+	color: black;
+	margin-bottom:40px;
+}
+ul{
+	list-style: none;
+}
+li{
+	float:left;
+}
+li a{
+	color: black;
+}
+li a:hover {
+	color: #C52F3A;
+}
+#poster{
+width:170px;
+height:200px;
+}
+#cancel{
+	background: transparent;
+	cursor: pointer;
+	border: 0px;
+	outline: 0px;
+	font-size:17px;
+}
+.th{
+}
+.td{
+}
+
 </style>
 
 <script>
@@ -133,25 +146,49 @@ button {
 		$('html, body').animate({
 			scrollTop : offset.top
 		}, 400);
+		
 	}
+	$(function(){
+		$("#cancel").click(function(){
+			var result = confirm("예매를 취소하시겠습니까?");			
+		
+		if(result){
+			$("#form").submit();
+		}else{
+			window.location.href="mypageForm.do";
+		}
+		
+		});
+	});
+	
 </script>
 </head>
 
 <body>
 	<main>
-		<form action="cancel" method="post">
+		<form action="cancel" method="post" id="form">
 			<input type="hidden" name="customerno" value="${cdto.customerno}" />
 			<input type="hidden" name="ticketno" value="${rdto.ticketno}" />
 			<input type="hidden" name="sname" value="${sdto.sname}" />
 			
-			<c:forEach var="r" items="${rlist}">
+			<c:forEach var="r"  items="${rlist}">
 				<input type="hidden" name="seatno" value="${r.seatno}" />
 			</c:forEach>
 			<div id="container">
+				<div class="header">
+			<div class="top_line">
+				<ul>
+					<c:set var="path" value="${pageContext.request.contextPath}" />
+					<li><a href="${path}/home">홈</a></li>
+					<li>&nbsp; 	&gt; &nbsp;</li>
+					<li>마이페이지</li>
+				</ul>			
+			</div>
+		</div>
 				<table id="table1">
 					<tr>
 						<td class="" rowspan="3" width="250px"><img
-							src="resources/images/customer.png"
+							src="https://i.pinimg.com/236x/f5/01/dd/f501ddf1d0174f84f24be501838cbb46.jpg"
 							style="vertical-align: bottom;" width="60%" height="50%" /></td>
 						<td class=""></td>
 						<td class="" height="100px"><button type="button"
@@ -159,87 +196,97 @@ button {
 					</tr>
 
 					<tr>
+						
 						<td class="" width="500px"><font size="6"><b>${cdto.id}님
 									반갑습니다!</b></font></td>
 						<td class="" height="100px"><button type="button"
 								onclick="fn_move('2')">나의 관람평</button></td>
 					</tr>
-
 					<tr>
-						<td class="">보유 포인트: ${cdto.point}</td>
+						<td class="">보유 포인트: ${cdto.point} P</td>
 						<td class="" height="100px"><button type="button"
 								onclick="fn_move('3')">나의 문의 내역</button></td>
 					</tr>
-
 					<tr>
+						
+						<td class=""></td>
 						<td class="b"><input type="button" id="b" value="회원정보"
 							onclick="location.href='/hnmk/customerInfoForm.do'" /></td>
 						<td class=""></td>
-						<td class="" height="100px"><button type="button"
-								onclick="fn_move('4')">나의 참여 이벤트</button></td>
 					</tr>
 				</table>
 
 				<br> <br>
 
 				<div>
-					<div id="div1">
+					<div id="div1" style="WORD-BREAK:BREAK-ALL">
 						<h2>나의 예매 내역</h2>
-						<hr>
-						<table id="table2">
+						<table id="table2" >
 							<c:set var="t" value="${rdto.ticketno}"></c:set>
 							<c:choose>
 								<c:when test="${not empty t }">
-									<tr>
-										<td id="r1">영화제목 : ${mdto.mtitle}</td>
-										<td id="r2">티켓번호 : ${rdto.ticketno}</td>
-									</tr>
-
-									<tr>
-										<td id="r3">관람일시 : ${sdto.ssdate}</td>
-										<td id="r4">상영관 : ${sdto.sname}</td>
-									</tr>
-
-									<tr>
-										<c:forEach var="r" items="${rlist}">
-											<td colspan="2" id="r5">관람좌석 : ${r.seatno}</td>
+								<tr class="tr">
+									<th></th>
+									<th width="15%" class="th">영화제목</th>
+									<th width="16%" class="th">티켓번호</th>
+									<th  width="16%" class="th">상영관</th>
+									<th width="16%" class="th">관람일시</th>
+									<th width="16%" class="th">좌석</th>
+									<th width="16% class="th">예매취소</th>
+								</tr>
+								<tr class="tr">
+									<td><img id="poster" src="${mdto.poster}" alt="" /></td>
+									<td class="td" width="15%">${mdto.mtitle}</td>
+									<td class="td" width="16%">${rdto.ticketno}</td>
+									<td class="td" width="16%" >${sdto.sname}</td>
+									<td class="td" width="16%" >${sdto.ssdate}</td>
+									<td class="td" width="16%" >
+									<c:forEach var="r" items="${rlist}">
+											<span>${r.seatno}</span>
 										</c:forEach>
-									</tr>
-									<tr>
-										<td><input type="submit" value="예매취소" /></td>
-									</tr>
+										</td>
+									<td width="16%"><input type="button" id="cancel" value="취소하기" /></td>
+								</tr>
 								</c:when>
 								<c:when test="${empty t }">
-									<tr>
-										<td id="r6">영화제목 :</td>
-										<td id="r7">티켓번호 :</td>
-									</tr>
-
-									<tr>
-										<td id="r8">관람일시 :</td>
-										<td id="r9">상영관 :</td>
-									</tr>
-
-									<tr>
-										<td colspan="2" id="r10">관람좌석 :</td>
-									</tr>
+								<tr>
+									<th >영화제목</th>
+									<th >티켓번호</th>
+									<th >관람일시</th>
+									<th >상영관</th>
+									<th >좌석</th>
+								</tr>
+								<tr id="no">
+									<td colspan="5">예매 내역이 없습니다.</td>
+								</tr>
 								</c:when>
 							</c:choose>
 						</table>
 					</div>
 
+
 					<div id="div2">
 						<h2>나의 관람평</h2>
-						<hr>
-						<p style="text-align: center;">
-							<br> <br> <br> <br> <br> <font
-								color="gray">나의 관람평이 없습니다.</font> <br> <br> <br>
-							<br> <br>
+						<table id="table3">
+							<tr>
+								<th>영화제목</th>
+								<th>영화</th>
+								<th>영화평점</th>
+								<th>내용</th>
+								<th>등록일</th>
+							</tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+								<td></td>
+							</tr>
+						</table>	
 					</div>
 
 					<div id="div3">
 						<h2>나의 문의 내역</h2>
-						<hr>
 						<table id="table4">
 							<tr>
 								<th>유형</th>
@@ -255,37 +302,9 @@ button {
 								<td></td>
 							</tr>
 
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
-
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
 						</table>
 					</div>
 
-					<div id="div4">
-						<h2>나의 참여 이벤트</h2>
-						<hr>
-						<p style="text-align: center;">
-							<br> <br> <br> <br> <br> <font
-								color="gray">나의 참여 이벤트가 없습니다.</font> <br> <br> <br>
-							<br> <br>
-					</div>
 				</div>
 			</div>
 		</form>

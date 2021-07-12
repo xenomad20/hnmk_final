@@ -177,7 +177,7 @@
 	<div id="join-form">
 		<br>
 		<br>
-		<form id="joinForm" action="/hnmk_cinemaaa/joinProc.do" method="get">
+		<form id="joinForm" action="/hnmk/joinProc.do" method="get">
 
 		<!-- 약관동의 division -->
 		<div id="agreementDiv">

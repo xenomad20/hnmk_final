@@ -9,7 +9,7 @@
 <body>
 
 	<div class="">
-	<form action="/hnmk/loginHome.do" method="get">
+	<form action="/hnmk/home" method="get">
 		<table>
 			<tr>
 			 <td>HNMK시네마 회원가입을 환영합니다.</td>

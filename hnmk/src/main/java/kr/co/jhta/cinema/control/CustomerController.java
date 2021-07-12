@@ -79,7 +79,7 @@ public class CustomerController {
 		session.invalidate();
 
 		System.out.println("로그아웃=============================================");
-		return "loginForm";
+		return "redirect:home";
 	}
 
 	// 회원가입폼으로 이동
@@ -97,7 +97,7 @@ public class CustomerController {
 		cs.joinCustomer(dto);
 
 		System.out.println("회원등록=============================================");
-		return "joinWelcome";
+		return "redirect:home";
 	}
 
 	// 회원등록시 아이디 중복체크
@@ -110,39 +110,38 @@ public class CustomerController {
 	}
 
 	// 마이페이지로 이동
-	@RequestMapping(value = "/mypageForm.do", method = RequestMethod.GET)
-	public String mypageForm(CustomerDTO dto, Model model, HttpSession session) throws Exception {
-		Object obj = session.getAttribute("id");
-		if(obj!=null) {
-		String id = (String)obj;
-		
-		//회원정보들
-		CustomerDTO cdto= cs.selectInfo(id);
-		model.addAttribute("cdto", cdto);
-		
-		//예매정보들을 각각 모아옴
-		
-		ReserveDTO rdto = rs.selectReserve(cdto.getCustomerno());
-		if(rdto!=null) {
-		model.addAttribute("rdto", rdto); // (티켓번호)
+		@RequestMapping(value = "/mypageForm.do", method = RequestMethod.GET)
+		public String mypageForm(CustomerDTO dto, Model model, HttpSession session) throws Exception {
+			Object obj = session.getAttribute("id");
+			if(obj!=null) {
+			String id = (String)obj;
+			
+			//회원정보들
+			CustomerDTO cdto= cs.selectInfo(id);
+			model.addAttribute("cdto", cdto);
+			
+			//예매정보들을 각각 모아옴
+			
+			ReserveDTO rdto = rs.selectReserve(cdto.getCustomerno());
+			if(rdto!=null) {
+			model.addAttribute("rdto", rdto); // (티켓번호)
 
-		List<ReserveDTO> rlist = rs.selectRd(rdto.getTicketno());
-		model.addAttribute("rlist", rlist);// (좌석)
-		
-		ScheduleDTO sdto= ts.scheduleAll(rdto.getSsno());
-		model.addAttribute("sdto", sdto); //(상영관,관람일시)
-		
-		MovieDTO mdto= ms.readOne(sdto.getMno());
-		model.addAttribute("mdto", mdto);// (영화제목)
+			List<ReserveDTO> rlist = rs.selectRd(rdto.getTicketno());
+			model.addAttribute("rlist", rlist);// (좌석)
+			
+			ScheduleDTO sdto= ts.scheduleAll(rdto.getSsno());
+			model.addAttribute("sdto", sdto); //(상영관,관람일시)
+			
+			MovieDTO mdto= ms.readOne(sdto.getMno());
+			model.addAttribute("mdto", mdto);// (영화제목)
+			}
+			
+			return "mypageForm";
+			
+			}else {
+				return "redirect:loginForm.do"; //로그인이 안되어있으면 돌아가라
+			}
 		}
-		
-		return "mypageForm";
-		
-		}else {
-			return "redirect:loginForm.do"; //로그인이 안되어있으면 돌아가라
-		}
-	}
-	
 
 	// 회원정보로 이동
 	@RequestMapping(value = "/customerInfoForm.do", method = RequestMethod.GET)

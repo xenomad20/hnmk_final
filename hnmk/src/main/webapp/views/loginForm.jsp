@@ -66,10 +66,10 @@ table {
 					</tr>
 					<tr>
 						<td>
-						<a href="/hnmk/joinForm.jsp"><font color="#c52f3a">회원가입  | </font></a>  
+						<a href="/hnmk/joinForm.do"><font color="#c52f3a">회원가입  | </font></a>  
 						</td>
 						<td>
-						<a href="/hnmk/idpwFindForm.jsp"><font color="#c52f3a">아이디/비밀번호 찾기</font></a>
+						<a href="/hnmk/idpwFindForm.do"><font color="#c52f3a">아이디/비밀번호 찾기</font></a>
 						</td>
 					</tr>
 					<tr>
