@@ -52,12 +52,12 @@ table {
 				<table>
 					<tr>
 						<th>아이디</th>
-						<td><input type="text" name="id" id="id" value="younee" required /> </td>
+						<td><input type="text" name="id" id="id" value="" required /> </td>
 					</tr>
 					<tr>
 						<th>비밀번호</th>
 						<td>
-						<input type="password" name="pw" id="pw" value="1234" required />
+						<input type="password" name="pw" id="pw" value="" required />
 						</td>
 					</tr>
 					<tr>

@@ -99,7 +99,7 @@ public class CustomerController {
 		cs.joinCustomer(dto);
 
 		System.out.println("회원등록=============================================");
-		return "redirect:home";
+		return "loginForm";
 	}
 
 	// 회원등록시 아이디 중복체크
