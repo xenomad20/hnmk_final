@@ -94,6 +94,8 @@ button {
    width: 100%;
    white-space: nowrap;
    padding-left: 30px;
+   margin-bottom: 0px;
+   font-size: inherit;
 }
 
 #movie-tab {
@@ -144,5 +146,19 @@ a:hover {
    color: blue;
    text-decoration: none;
 }
-.btn{border: none;}
+.btn{border: none; cursor: pointer;}
 #boxoffice{background-color: beige; border: ridge;}
+
+.reserve{
+   width: 70px;
+    height: 24px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.reserve-part{
+   position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+}
