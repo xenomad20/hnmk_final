@@ -87,7 +87,7 @@
 				     <p>평점 :  ${mdList.mratings }</p>
 				     <p>
 				     <input type="text" name="review" id="review" placeholder="타인을 비방하거나 스포일러는 삭제 될 수 있음으로 유의해주세요." />
-				     <input type="button" id="btn" value="작성" />
+				     <input type="button" id="btn" value="작성"  />
 				     </p>
 				     <p>
 				     </p>
