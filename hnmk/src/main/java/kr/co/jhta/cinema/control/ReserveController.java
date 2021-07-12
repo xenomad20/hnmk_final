@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.jhta.cinema.dto.CustomerDTO;
 import kr.co.jhta.cinema.dto.MovieDTO;
+import kr.co.jhta.cinema.dto.MovieDetailInfoDTO;
 import kr.co.jhta.cinema.dto.ReserveDTO;
 import kr.co.jhta.cinema.dto.ScheduleDTO;
 import kr.co.jhta.cinema.dto.ScreenDTO;
@@ -43,6 +44,7 @@ public class ReserveController {
 	ReserveService rs;
 	@Autowired
 	CustomerService cs;
+	
 
 	@GetMapping("/reserve") // parameter가 null 일때 허용해주는 코드
 	public String reserveForm(Model model, @RequestParam(value = "cno", required = false) String cno,
@@ -51,6 +53,7 @@ public class ReserveController {
 			@RequestParam(value = "desc", required = false) String desc, HttpSession session) {
 		Object obj = session.getAttribute("id");
 		if (obj != null) {	
+		String id= (String)obj;
 		if (cno != null) {
 			int ccno = Integer.parseInt(cno);
 			// 상영관 영화관기준리스트
@@ -64,6 +67,7 @@ public class ReserveController {
 			// 영화1건
 			MovieDTO movieOne = ms.readOne(mmno);
 			model.addAttribute("movieOne", movieOne); // 영화관 1개조회
+		
 
 		}
 		if (sname != null && mno != null) {
@@ -117,7 +121,13 @@ public class ReserveController {
 		model.addAttribute("movielist", movielist); // 영화리스트
 		model.addAttribute("movieBoxlist", movieBoxlist); // 박스오피스리스트
 		model.addAttribute("theaterlist", theaterlist); // 영화관리스트
+		
+		CustomerDTO cdto= cs.selectInfo(id);
+		ReserveDTO reserveCheck= rs.selectReserve(cdto.getCustomerno());
+		
+		model.addAttribute("reserveCheck", reserveCheck); //이미 티켓이있으면 예매불가
 		return "reserveForm";
+		
 		}else{
 			return "redirect:loginForm.do";
 		}
@@ -140,6 +150,10 @@ public class ReserveController {
 			// 영화1건
 			MovieDTO movieOne = ms.readOne(mmno);
 			model.addAttribute("movieOne", movieOne); // 영화관 1개조회
+			
+			
+			MovieDetailInfoDTO mdidto = mdsi.readDetailOne(mmno);
+			model.addAttribute("mdidto", mdidto); // 영화관디테일 1개조회(관란등급을위해)
 		}
 		if (cno != null) {
 			int ccno = Integer.parseInt(cno);
@@ -274,41 +288,37 @@ public class ReserveController {
 		}
 	}
 
-//	@PostMapping("/cancel")
-//	public String cancel(@RequestParam("customerno") int customerno, @RequestParam("ticketno") String ticketno,
-//			@RequestParam("sname") String sname, @RequestParam("seatno") String[] seatno) {
-//
-//		System.out.println(seatno[0]);
-//		System.out.println(seatno[1]);
-//		if (seatno[0] == null) {
-//			rs.deleteReserve(customerno); // 예매테이블삭제
-//			rs.deleteRd(ticketno); // 예매디테일테이블(좌석)삭제
-//			System.out.println("1");
-//			rs.cancelSeatno(sname + "." + seatno[0]); // 좌석 선택가능으로 update
-//		} else if (seatno[2] != null && seatno[3] != null) {
-//			rs.deleteReserve(customerno); // 예매테이블삭제
-//			rs.deleteRd(ticketno); // 예매디테일테이블(좌석)삭제
-//			System.out.println("1");
-//			rs.cancelSeatno(sname + "." + seatno[0]); // 좌석 선택가능으로 update
-//			System.out.println("2");
-//			rs.cancelSeatno(sname + "." + seatno[1]); // 좌석 선택가능으로 update
-//		} 
-//		else if (seatno[0] != null && seatno[1] != null && seatno[2] != null) {
-//			rs.deleteReserve(customerno); // 예매테이블삭제
-//			rs.deleteRd(ticketno); // 예매디테일테이블(좌석)삭제
-//			rs.cancelSeatno(sname + "." + seatno[0]); // 좌석 선택가능으로 update
-//			rs.cancelSeatno(sname + "." + seatno[1]); // 좌석 선택가능으로 update
-//			rs.cancelSeatno(sname + "." + seatno[2]); // 좌석 선택가능으로 update
-//		} else {
-//			rs.deleteReserve(customerno); // 예매테이블삭제
-//			rs.deleteRd(ticketno); // 예매디테일테이블(좌석)삭제
-//			rs.cancelSeatno(sname + "." + seatno[0]); // 좌석 선택가능으로 update
-//			rs.cancelSeatno(sname + "." + seatno[1]); // 좌석 선택가능으로 update
-//			rs.cancelSeatno(sname + "." + seatno[2]); // 좌석 선택가능으로 update
-//			rs.cancelSeatno(sname + "." + seatno[3]); // 좌석 선택가능으로 update
-//		}
-//
-//		return "redirect:mypageForm.do";
-//	}
+	@PostMapping("/cancel")
+	public String cancel(@RequestParam("customerno") int customerno, @RequestParam("ticketno") String ticketno,
+			@RequestParam("sname") String sname, @RequestParam("seatno") String[] seatno) {
+
+			
+		//좌석을 배열로 받아와 배열이 몇개있는지(좌석수)에따라 나눔
+		if(seatno.length==1) {
+			rs.deleteReserve(customerno); // 예매테이블삭제
+			rs.deleteRd(ticketno); // 예매디테일테이블(좌석)삭제
+			rs.cancelSeatno(sname + "." + seatno[0]); // 좌석 선택가능으로 update
+		}else if(seatno.length==2) {
+			rs.deleteReserve(customerno); // 예매테이블삭제
+			rs.deleteRd(ticketno); // 예매디테일테이블(좌석)삭제
+			rs.cancelSeatno(sname + "." + seatno[0]); // 좌석 선택가능으로 update
+			rs.cancelSeatno(sname + "." + seatno[1]); // 좌석 선택가능으로 update
+		}else if(seatno.length==3) {
+			rs.deleteReserve(customerno); // 예매테이블삭제
+			rs.deleteRd(ticketno); // 예매디테일테이블(좌석)삭제
+			rs.cancelSeatno(sname + "." + seatno[0]); // 좌석 선택가능으로 update
+			rs.cancelSeatno(sname + "." + seatno[1]); // 좌석 선택가능으로 update
+			rs.cancelSeatno(sname + "." + seatno[2]); // 좌석 선택가능으로 update
+		}else {
+			rs.deleteReserve(customerno); // 예매테이블삭제
+			rs.deleteRd(ticketno); // 예매디테일테이블(좌석)삭제
+			rs.cancelSeatno(sname + "." + seatno[0]); // 좌석 선택가능으로 update
+			rs.cancelSeatno(sname + "." + seatno[1]); // 좌석 선택가능으로 update
+			rs.cancelSeatno(sname + "." + seatno[2]); // 좌석 선택가능으로 update
+			rs.cancelSeatno(sname + "." + seatno[3]); // 좌석 선택가능으로 update
+		}
+
+		return "redirect:mypageForm.do";
+	}
 
 }

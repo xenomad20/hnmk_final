@@ -68,7 +68,7 @@
  
 	<header>
         <div class="wrapper">
-        <h1>HNMK CINEMA</h1>
+        <a href="/hnmk/home"><h1>HNMK CINEMA</h1></a>
         
             <div class="wrap-top">
                     <ul class="menu-top">     
