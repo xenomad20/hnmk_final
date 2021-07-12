@@ -163,14 +163,22 @@ public class NoticeController {
 	
 	// 1:1문의 보기
 	@GetMapping("/noticeDetail_inquiry.do")
-	public String inquiry(@RequestParam(value = "fno" ,required = false, defaultValue = "0")int fno,Model model) {
-		model.addAttribute("inquiryOne",ns.inquiryOne(fno));
-		model.addAttribute("answer",ns.answerAll(fno));
-		
-		// 조회수 업데이트
-		ns.faqUpdateHits(fno);
-		return "noticeDetail_inquiry";
-		
+	public String inquiry(@RequestParam(value = "fno" ,required = false, defaultValue = "0")int fno,Model model, CustomerDTO dto, HttpSession session) {
+		Object obj = session.getAttribute("id");
+		if(obj!=null) {
+			String id = (String)obj;
+			
+			dto = cs.selectInfo(id);
+			model.addAttribute("cdto",dto);
+			model.addAttribute("inquiryOne",ns.inquiryOne(fno));
+			model.addAttribute("answer",ns.answerAll(fno));
+			
+			// 조회수 업데이트
+			ns.faqUpdateHits(fno);
+			return "noticeDetail_inquiry";
+		}else {
+			return "redirect:loginForm.do";
+		}
 	}
 	
 	// 1:1문의 댓글달기
