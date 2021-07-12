@@ -70,7 +70,7 @@
 							<div>약도</div>
 							<c:set var="cno" value='${theaterOne.cno}'></c:set>
 							<c:choose>
-								<c:when test="${cno eq 1} ">
+								<c:when test="${cno eq 1}">
 									<a href="http://m.map.naver.com/map.nhn?lng=127.0264086&amp;lat=37.498214&amp;level=2" class="button purple" target="_blank" title="새창열림">실시간 길찾기</a>
 								</c:when>
 								<c:when test="${cno eq 2}">
