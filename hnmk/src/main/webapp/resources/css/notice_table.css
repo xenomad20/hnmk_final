@@ -9,6 +9,7 @@ table {
 	box-sizing: border-box;
 	text-indent: initial;
 	margin: 0 auto;
+    min-height: 550px;
 }
 
  thead {
@@ -35,7 +36,7 @@ table {
 	padding: 15px 0;
 	text-align: center;
 	line-height: 24px;
-	font-size: 15px;
+	font-size: 20px;
 }
 
 tbody {

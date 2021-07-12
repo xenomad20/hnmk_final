@@ -55,11 +55,11 @@
 
 	<!-- 1:1문의 가져오기 -->
 	<select id="inquiryAll" resultType="ndto" parameterType="se">
-		SELECT fno,ftype,ftitle,fcontents,fregdate,fpwd,fhits,customerno
+		SELECT fno,ftype,ftitle,fcontents,fregdate,fpwd,fhits,customerno,id
 		FROM (SELECT rownum rn,
-		fno,ftype,ftitle,fcontents,fregdate,fpwd,fhits,customerno
-		FROM (SELECT fno,ftype,ftitle,fcontents,fregdate,fpwd,fhits,customerno
-		FROM faq
+		fno,ftype,ftitle,fcontents,fregdate,fpwd,fhits,customerno,id
+		FROM (SELECT fno,ftype,ftitle,fcontents,fregdate,fpwd,fhits,customerno,id
+		FROM faq natural join customer
 		ORDER BY fno desc)
 		WHERE rownum &lt; = #{endNo})
 		WHERE rn &gt; = #{startNo}

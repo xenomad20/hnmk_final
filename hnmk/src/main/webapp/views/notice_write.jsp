@@ -74,7 +74,7 @@
 						<th>
 						<span id="star">*</span> 제목
 						<input type="hidden" name="ftype" value="1:1문의" />
-						<input type="hidden" name="customerno" value="3" /><!-- 회원테이블이랑 연결? -->
+						<input type="hidden" name="customerno" value="${cdto.customerno }"/>
 						</th>
 						<td>
 							<input type="text" id="ntit" name="ftitle" placeholder="문의 제목을 입력해주세요." /> 

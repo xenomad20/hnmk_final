@@ -1,7 +1,11 @@
 package kr.co.jhta.cinema.control;
 
 import java.util.List;
+
+import javax.mail.Session;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.jhta.cinema.dto.CustomerDTO;
 import kr.co.jhta.cinema.dto.NoticeDTO;
+import kr.co.jhta.cinema.service.CustomerService;
 import kr.co.jhta.cinema.service.NoticeService;
 
 @Controller
@@ -21,12 +27,15 @@ public class NoticeController {
 
 	@Autowired
 	NoticeService ns;
+	
+	@Autowired
+	CustomerService cs;
 
 	@GetMapping("/notice.do")
-	public String notice(Model model, @RequestParam(name = "currentPageNo", defaultValue = "1") int currentPageNo) {
+	public String notice(CustomerDTO dto,HttpSession session, Model model, @RequestParam(name = "currentPageNo", defaultValue = "1") int currentPageNo) {
 
 		// 페이지당 게시물 수
-		int countPerPage = 5;
+		int countPerPage = 7;
 		// 시작번호
 		int startNo = (currentPageNo - 1) * countPerPage + 1;
 		// 끝번호
@@ -68,7 +77,6 @@ public class NoticeController {
 		List<NoticeDTO> inquiry = ns.inquiryAll(startNo, endNo);
 		model.addAttribute("inquiry",inquiry);
 		
-		
 				
 		
 
@@ -104,6 +112,17 @@ public class NoticeController {
 		// important공지사항
 		List<NoticeDTO> importantOne = ns.importantOne();
 		model.addAttribute("important",importantOne);
+		
+		// id의 customerno 가져오기
+		Object obj = session.getAttribute("id");
+		if(obj!=null) {
+			String id = (String)obj;
+			
+			CustomerDTO cdto = cs.selectInfo(id);
+			model.addAttribute("cdto",cdto);
+			model.addAttribute("id", id);
+		}
+		
 
 		return "notice";
 	}
@@ -121,8 +140,19 @@ public class NoticeController {
 	
 	// 1:1문의 쓰기
 	@GetMapping("/notice_write.do")
-	public String write() {
-		return "notice_write";
+	public String write(Model model, CustomerDTO dto, HttpSession session) {
+		Object obj = session.getAttribute("id");
+		if(obj!=null) {
+			String id = (String)obj;
+			
+			dto = cs.selectInfo(id);
+			model.addAttribute("cdto",dto);
+			
+			return "notice_write";
+		}else {
+			
+			return "redirect:loginForm.do";
+		}
 	}
 	// 1:1문의 쓰기
 	@PostMapping("/notice_write.do")
