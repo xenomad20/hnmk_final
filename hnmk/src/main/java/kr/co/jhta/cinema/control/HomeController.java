@@ -34,9 +34,9 @@ public class HomeController {
 		List<NoticeDTO> list = ns.noticeAll(1, 5);
 		model.addAttribute("list", list);
 		
-		for (NoticeDTO dto: list) {
-			System.out.println(dto.getNtitle());
-		}
+//		for (NoticeDTO dto: list) {
+//			System.out.println(dto.getNtitle());
+//		}
 		
 		//포스터 보여주기
 		List<MovieDTO> listp = hs.homeBoxAll();

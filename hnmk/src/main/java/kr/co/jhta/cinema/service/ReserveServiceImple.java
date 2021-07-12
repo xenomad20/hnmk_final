@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.jhta.cinema.dao.ReserveDAO;
 import kr.co.jhta.cinema.dto.CustomerDTO;
+import kr.co.jhta.cinema.dto.NoticeDTO;
 import kr.co.jhta.cinema.dto.ReserveDTO;
 
 @Repository
@@ -57,6 +58,11 @@ public class ReserveServiceImple implements ReserveService {
 	@Override
 	public void cancelSeatno(String seatno) {
 		dao.cancelSeatno(seatno);
+	}
+
+	@Override
+	public List<NoticeDTO> selectFAQ(int customerno) {
+		return dao.selectFAQ(customerno);
 	}
 	
 	
