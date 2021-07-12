@@ -18,8 +18,8 @@ public class CommentServiceImple implements CommentService{
 	CommentDAO dao;
 	
 	@Override
-	public List<CommentDTO> readAll() {
-		return dao.readAll();
+	public List<CommentDTO> readAll(int mno) {
+		return dao.readAll(mno);
 	}
 
 	@Override
