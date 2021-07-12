@@ -158,11 +158,13 @@ li a:hover {
 	outline: 0px;
 	font-size: 17px;
 }
-#use{
-padding-bottom:30px;
+
+#use {
+	padding-bottom: 30px;
 }
-#ii{
-padding-left:30px;
+
+#ii {
+	padding-left: 30px;
 }
 </style>
 
@@ -189,7 +191,7 @@ padding-left:30px;
 		$("#b").click(function() {
 			$("#info").hide();
 			$("#info2").show();
-			$("#main").css("height","1600px");
+			$("#main").css("height", "1600px");
 		});
 	});
 </script>
@@ -251,7 +253,7 @@ padding-left:30px;
 				<div id="info2">
 					<h2>회원정보</h2>
 					<table id="info2-table">
-							<tr>
+						<tr>
 							<td class="" rowspan="3" width="250px"><img id="ii"
 								src="https://i.pinimg.com/236x/f5/01/dd/f501ddf1d0174f84f24be501838cbb46.jpg"
 								style="vertical-align: bottom;" width="150px" height="150px" /></td>
@@ -261,14 +263,23 @@ padding-left:30px;
 						</tr>
 
 						<tr>
-	
-							<td id="use"><br>이름: ${cdto.name } <br><br>
-							생년월일: ${cdto.birth}<br><br> 휴대전화: ${cdto.hp} <br><br>이메일: ${cdto.email}<br><br> 주소: ${cdto.addres}</td>
-							
+
+							<td id="use"><br>이름: ${cdto.name } <br>
+							<br> 생년월일: ${cdto.birth}<br>
+							<br> 휴대전화: ${cdto.hp} <br>
+							<br>이메일: ${cdto.email}<br>
+							<br> 주소: ${cdto.addres}</td>
+
 							<td class="" height="100px"><button type="button"
-									onclick="fn_move('1')">예매 티켓</button><br><br><br><button type="button"
-									onclick="fn_move('2')">나의 관람평</button><br><br><br><button type="button"
-									onclick="fn_move('3')">나의 문의 내역</button></td>
+									onclick="fn_move('1')">예매 티켓</button>
+								<br>
+							<br>
+							<br>
+							<button type="button" onclick="fn_move('2')">나의 관람평</button>
+								<br>
+							<br>
+							<br>
+							<button type="button" onclick="fn_move('3')">나의 문의 내역</button></td>
 						</tr>
 					</table>
 				</div>
@@ -332,13 +343,14 @@ padding-left:30px;
 								<th>내용</th>
 								<th>등록일</th>
 							</tr>
-							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
-							</tr>
+							
+								<tr>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
 						</table>
 					</div>
 
@@ -348,17 +360,28 @@ padding-left:30px;
 							<tr>
 								<th>유형</th>
 								<th>제목</th>
-								<th>답변상태</th>
+								<th>내용</th>
 								<th>등록일</th>
 							</tr>
-
+							
+						<c:forEach var="n" items="${nlist}">
+						 <c:set var="nlist" value="${n.customerno}"></c:set>
+						 <c:choose>
+						  <c:when test="${not empty nlist}">
 							<tr>
-								<td></td>
-								<td></td>
-								<td></td>
-								<td></td>
+								<td>${n.ftype}</td>
+								<td><a href="notice.do">${n.ftitle}</a></td>
+								<td>${n.fcontents}</td>
+								<td>${n.fregdate}</td>
 							</tr>
-
+						   </c:when>
+						  	<c:when test="${empty nlist}">	
+						   <tr>
+							 <td colspan="4">문의 내역이 없습니다.</td>
+						   </tr>
+						   </c:when>
+						</c:choose>	
+						</c:forEach>	
 						</table>
 					</div>
 

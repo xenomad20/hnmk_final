@@ -3,6 +3,7 @@ package kr.co.jhta.cinema.dao;
 import java.util.List;
 
 import kr.co.jhta.cinema.dto.CustomerDTO;
+import kr.co.jhta.cinema.dto.NoticeDTO;
 import kr.co.jhta.cinema.dto.ReserveDTO;
 
 public interface ReserveDAO {
@@ -24,5 +25,6 @@ public interface ReserveDAO {
 	public void deleteRd(String ticketno);
 	//예매취소 좌석 다시 선택가능으로 변경
 	public void cancelSeatno(String seatno);
-	
+	//나의 문의내역 customerController 마이페이지에서사용
+	public List<NoticeDTO> selectFAQ(int customerno);
 }
