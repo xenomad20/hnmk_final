@@ -37,6 +37,12 @@ table {
 	alignment: center;
 }
 
+#register {
+	display: flex;
+	justify-content: center;
+	margin-left: 20px;
+}
+
 </style>
 
 </head>
@@ -65,11 +71,11 @@ table {
 						</td>
 					</tr>
 					<tr>
-						<td>
-						<a href="/hnmk/joinForm.do"><font color="#c52f3a">회원가입  | </font></a>  
+						<td id="register">
+						<a href="/hnmk/joinForm.do"><font size="2" color="gray">회원가입  | </font></a>  
 						</td>
 						<td>
-						<a href="/hnmk/idpwFindForm.do"><font color="#c52f3a">아이디/비밀번호 찾기</font></a>
+						<a href="/hnmk/idpwFindForm.do"><font size="2" color="gray">아이디/비밀번호 찾기</font></a>
 						</td>
 					</tr>
 					<tr>
@@ -84,6 +90,6 @@ table {
 </div>
 
 </main>
-<%@ include file="/views/footer.jsp" %>
+
 </body>
 </html>

@@ -221,7 +221,7 @@
 						<td>비밀번호 확인</td>
 						<td>
 							<input type="password" id="pwdCheck" name="pwdCheck" value="" maxlength="15" />
-							<div class="valid">비밀번호를 다시 입력하세요</div>
+							<div class="valid"><font size="2" color="gray">비밀번호를 다시 입력하세요</font></div>
 						</td>
 					</tr>
 					
@@ -236,7 +236,7 @@
 						<td>생년월일</td>
 						<td>
 							<input type="text" id="birth" name="birth" value="" maxlength="40" />
-							<div class="valid">공백 없이 입력하세요 예)19800101</div>
+							<div class="valid"><font size="2" color="gray">공백 없이 입력하세요 예)19800101</font></div>
 						</td>
 					</tr>
 					
@@ -244,7 +244,7 @@
 						<td>휴대전화</td>
 						<td>
 							<input type="text" id="hp" name="hp" value="" maxlength="30" />
-							<div class="valid">공백 없이 입력하세요 예)01012345678</div>
+							<div class="valid"><font size="2" color="gray">공백 없이 입력하세요 예)01012345678</font></div>
 						</td>
 					</tr>
 					
@@ -267,7 +267,7 @@
 				</table>
 			</div>			
 			<div id="registerbtn">			
-				<input type="button" value="가입하기" style="width: 500px; height: 30px;"onclick="checkValue()" />
+				<input type="button" value="가입하기" style="width:500px; height:30px;"onclick="checkValue()" />
 			</div>
 			<br>
 			<br>
@@ -276,6 +276,6 @@
 		</form>
 	</div>
 	</main>
-	<%@ include file="/views/footer.jsp" %>
+
 </body>
 </html>
