@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ include file="/views/header.jsp" %>
+<%@ include file="/views/header.jsp"%>
 
 <!DOCTYPE html>
 <html>
@@ -16,18 +16,23 @@
 
 <style>
 /* datepicker buttonImage css */
-*{
-margin:0;
-padding:0;
+* {
+	margin: 0;
+	padding: 0;
 }
-main{
+
+main {
 	width: 1100px;
 	height: 800px;
 	margin: 0 auto;
-	margin-top:30px;
-	margin-bottom:30px;
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
-#container{background-color:#FDFCF0}
+
+#container {
+	background-color: #FDFCF0
+}
+
 #container-header {
 	width: 1100px;
 }
@@ -53,13 +58,13 @@ img.ui-datepicker-trigger {
 }
 
 #header-title {
-	padding-top:10px;
+	padding-top: 10px;
 	font-size: 15px;
-	margin-bottom:25px;
+	margin-bottom: 25px;
 }
 
 #date-schedule {
-	background-color:white;
+	background-color: white;
 	width: 100%;
 	height: 53px;
 	border: 1px solid #760C0C;
@@ -94,8 +99,8 @@ img.ui-datepicker-trigger {
 }
 
 .center-title {
-	padding-top:10px;
-	padding-bottom:10px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 	padding-left: 16px;
 	font-size: 17px;
 	font-weight: bold;
@@ -104,7 +109,7 @@ img.ui-datepicker-trigger {
 .list-button {
 	position: relative;
 	left: 24px;
-		margin-bottom: 10px;
+	margin-bottom: 10px;
 	width: 115px;
 	height: 30px;
 	background: transparent;
@@ -214,14 +219,14 @@ img.ui-datepicker-trigger {
 }
 
 .movie-title {
-	padding-top:5px;
-	padding-bottom:5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	text-align: left;
 }
 
 .movieBox-title {
-	padding-top:5px;
-	padding-bottom:5px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	text-align: left;
 }
 
@@ -238,9 +243,10 @@ img.ui-datepicker-trigger {
 	border-right: 1px solid #d8d9db;
 	margin-bottom: 10px;
 }
-.theater-title{
-padding-top:5px;
-	padding-bottom:5px;
+
+.theater-title {
+	padding-top: 5px;
+	padding-bottom: 5px;
 }
 
 #screen-list {
@@ -293,44 +299,47 @@ padding-top:5px;
 
 .schedule-list {
 	padding-left: 21px;
-	padding-bottom:15px;
-	
+	padding-bottom: 15px;
 }
 /*상영일정 div에 스크롤을 추가하려는데 반영이안됨 */
 #time-list {
 	width: 440px;
 	height: 280px;
-	padding-left:10px;
+	padding-left: 10px;
 	position: relative;
-	bottom:26px;
+	bottom: 26px;
 }
 
 .desc-empty {
 	margin-top: 40px;
 	text-align: center;
 }
-a{
-text-decoration: none;
-color:black
+
+a {
+	text-decoration: none;
+	color: black
 }
-#cf{
-margin: 0 auto;
-width:1105px;
-height:80px;
-margin-top:10px;
-position: relative;
-right:12px;
+
+#cf {
+	margin: 0 auto;
+	width: 1105px;
+	height: 80px;
+	margin-top: 10px;
+	position: relative;
+	right: 12px;
 }
-.notime{
-padding-left:30px;
-margin-top: 40px;
-	font-weight:bold;
+
+.notime {
+	padding-left: 30px;
+	margin-top: 40px;
+	font-weight: bold;
 	text-align: center;
 }
-#filmgrade{
-   width: 23px;
-   height: 23px;
-   position: absolute;
+
+#filmgrade {
+	width: 23px;
+	height: 23px;
+	position: absolute;
 }
 </style>
 <script type="text/javascript">
@@ -349,7 +358,7 @@ margin-top: 40px;
 									'7월', '8월', '9월', '10월', '11월', '12월' ],
 							minDate : 0,
 							maxDate : "+6D",
-							onSelect : function(){
+							onSelect : function() {
 								console.log("d")
 							}
 						});
@@ -374,34 +383,35 @@ margin-top: 40px;
 					$("#topList-desc").show();
 				})
 		var desc = '<c:out value="${desc}"/>';
-		if($(".schedule-list").html()==null && desc==1  ){
-				
-				$("#notime").html("현재 선택하신 상영관에는");	
-				$("#notime2").html("상영일정 정보가 없습니다.");
-				$("#notime3").html("영화 또는 상영관을 다시 선택해주세요.");
-				$("#notime-img").show();
-				
+		if ($(".schedule-list").html() == null && desc == 1) {
+
+			$("#notime").html("현재 선택하신 상영관에는");
+			$("#notime2").html("상영일정 정보가 없습니다.");
+			$("#notime3").html("영화 또는 상영관을 다시 선택해주세요.");
+			$("#notime-img").show();
+
 		}
-		
-	var m = '<c:out value="${movieOne.mno}"/>';
-	if(m==m){
-		$("#"+m).css("background","#F8EFCE");
-		$("#"+m).css("color","black");
-	}
+
+		var m = '<c:out value="${movieOne.mno}"/>';
+		if (m == m) {
+			$("#" + m).css("background", "#F8EFCE");
+			$("#" + m).css("color", "black");
+		}
+
+		var c = '<c:out value="${reserveCheck}"/>';
 	
-	var c = '<c:out value="${reserveCheck}"/>';
-	if(c!=""){
-		
-		alert("      이미 예매한 티켓이 있습니다.\n  마이페이지에서 예매내역을 확인해주세요.");
-		location.href="mypageForm.do";
-	}
+		if (c != "") {
+
+			alert("  이미 예매한 티켓이 있습니다.\n  마이페이지에서 예매내역을 확인해주세요.");
+			location.href = "mypageForm.do";
+		}
 	});
 </script>
 </head>
 <body>
-  <main>
+	<main>
 		<div id="container">
-		
+
 			<div id="container-header">
 				<div id="header-title">
 					<h2>빠른예매</h2>
@@ -431,7 +441,8 @@ margin-top: 40px;
 						<button type="button" class="list-button" id="lb2">박스오피스</button>
 						<div id="movie-list">
 							<c:forEach var="movie" items="${movielist}">
-								<a href="reserve?mno=${movie.mno}"><p class="movie-title" id="${movie.mno}">${movie.mtitle}</p></a>
+								<a href="reserve?mno=${movie.mno}"><p class="movie-title"
+										id="${movie.mno}">${movie.mtitle}</p></a>
 							</c:forEach>
 
 						</div>
@@ -490,7 +501,8 @@ margin-top: 40px;
 									<p class="theater-title">${theater.location}</p>
 								</c:when>
 								<c:when test="${not empty mno}">
-									<a href="reserve?cno=${theater.cno}&mno=${movieOne.mno}"><p class="theater-title">${theater.location}</p></a>
+									<a href="reserve?cno=${theater.cno}&mno=${movieOne.mno}"><p
+											class="theater-title">${theater.location}</p></a>
 								</c:when>
 							</c:choose>
 						</c:forEach>
@@ -498,7 +510,8 @@ margin-top: 40px;
 					</div>
 					<div class="theater-list-section" id="screen-list">
 						<c:forEach var="screentheater" items="${screentheater}">
-							<a href="reserve?mno=${movieOne.mno}&cno=${theaterOne.cno}&sname=${screentheater.sname}&desc=1"><p
+							<a
+								href="reserve?mno=${movieOne.mno}&cno=${theaterOne.cno}&sname=${screentheater.sname}&desc=1"><p
 									class="theater-title" id="thtitle">${screentheater.sname}</p></a>
 						</c:forEach>
 					</div>
@@ -511,7 +524,8 @@ margin-top: 40px;
 							</c:when>
 							<c:when test="${not empty cno}">
 								<img id="theater-img" class="list-desc-img"
-									src="resources/images/${theaterOne.cimg}" alt='${theaterOne.location}' />
+									src="resources/images/${theaterOne.cimg}"
+									alt='${theaterOne.location}' />
 							</c:when>
 						</c:choose>
 					</div>
@@ -528,10 +542,12 @@ margin-top: 40px;
 						<p class="notime" id="notime2"></p>
 						<p class="notime" id="notime3"></p>
 						<c:forEach var="schdto" items="${schdtolist}">
-							<a href="seat?mno=${schdto.mno}&cno=${theaterOne.cno}&sname=${schdto.sname}&ssno=${schdto.ssno}"><p class=schedule-list id="sclist">${schdto.ssdate}&emsp;&emsp;${schdto.starttime}&emsp;~&emsp;
-								${schdto.endtime}&emsp;&emsp;${movieOne.mtitle}</p></a>
+							<a
+								href="seat?mno=${schdto.mno}&cno=${theaterOne.cno}&sname=${schdto.sname}&ssno=${schdto.ssno}"><p
+									class=schedule-list id="sclist">${schdto.ssdate}&emsp;&emsp;${schdto.starttime}&emsp;~&emsp;
+									${schdto.endtime}&emsp;&emsp;${movieOne.mtitle}</p></a>
 						</c:forEach>
-						
+
 						<!-- sname 파라미터를사용해야하는데 foreach문에 들어가있어서 따로 파라미터를만듦 -->
 						<!-- 상영관을 클릭했을때 desc란 구분만해주는 파라미터를 같이보내주어서 상영일정이 나오기 전까지 아래코드실행 -->
 						<c:set var="desc" value="${desc}"></c:set>
@@ -548,15 +564,17 @@ margin-top: 40px;
 			<div id="container-footer">
 				<!-- 광고 -->
 				<!-- 메가박스사이트에있는 광고가아니면 이미지가 다흐려져서... -->
-				<a href="https://direct.hi.co.kr/"><img id="cf" src="https://mlink-cdn.netinsight.co.kr/2020/10/29/9c22380b0aac240c356772ce7af4590a.jpg" alt="" /></a>
+				<a href="https://direct.hi.co.kr/"><img id="cf"
+					src="https://mlink-cdn.netinsight.co.kr/2020/10/29/9c22380b0aac240c356772ce7af4590a.jpg"
+					alt="" /></a>
 			</div>
-	
+
 		</div>
 
 
 
 
-  </main>	
-<%@ include file="/views/footer.jsp" %>
+	</main>
+	<%@ include file="/views/footer.jsp"%>
 </body>
 </html>
