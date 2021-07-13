@@ -18,29 +18,39 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js" integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30=" crossorigin="anonymous"></script>
 <script>
-	
-	function test(obj){
-		$.ajax({
-			url: "passChk.do",
-			type : "GET",
-			dataType : "JSON",
-			data : { "fpwd" : obj.form[0].value,"fno" : obj.form[1].value},
-			success : function(data){
-				if(data==1){
-					console.log("dddd");
-					$("#delForm").submit();
-				}else{
 
-					alert("비밀번호가 틀렸습니다!!");
-					return;
-				}
+function pass(obj){
+	$.ajax({
+		url: "passChk.do",
+		type : "GET",
+		dataType : "JSON",
+		data : { "fpwd" : obj.form[0].value,"fno" : obj.form[1].value},
+		success : function(data){
+			if(data==1){
+				console.log("dddd");
+				$("#delForm").submit();
+			}else{
+
+				alert("비밀번호가 틀렸습니다!!");
+				return;
 			}
-		})
-		
-	}
+		}
+	})
+	
+}
 
+</script>
+<script>
+ function cnoChk(obj){
 	
-	
+	var c = '<c:out value="${id}"/>';
+	if(c== ""){
+		alert("로그인 해주세요!");
+		location.href ="loginForm.do" ;
+	}else{
+		console.log("dd");
+	}		
+} 
 </script>
 </head>
 <body>
@@ -65,7 +75,11 @@
 			<div class="tab_inquiry">
 				<!-- 1:1 문의로 바로가기 -->
 				<p>더 궁금한 점이 있거나, 이미 문의한 내용과 답변을 확인하려면?</p>
-				<a href="notice_write.do?customerno=">1:1문의 바로가기</a>
+				<a href="notice_write.do" onclick="cnoChk(this);">
+					<input type="hidden" name="customerno" id="customerno" value="${cdto.customerno }"/>
+					1:1문의 바로가기
+				</a>
+				
 			</div>
 
 			<div class="table_faq" id="tabs-1">
@@ -134,11 +148,11 @@
 							<tr>
 						<!-- 페이지 넘버 -->
 							<td colspan="4"><c:if test="${prev1 }">
-									<a href="notice.do?currentPageNo=${currentPageNo-1 }#tabs-2"><button>이전</button></a>
+									<a href="notice.do?currentPageNo=${currentPageNo-1 }#tabs-2"><button class="numKey1">이전</button></a>
 								</c:if> <c:forEach var="no" begin="${startPageNo1 }" end="${endPageNo1 }">
-									<a href="notice.do?currentPageNo=${no }#tabs-2"><button>${no }</button></a>
+									<a href="notice.do?currentPageNo=${no }#tabs-2"><button class="numKey">${no }</button></a>
 								</c:forEach> <c:if test="${next1 }">
-									<a href="notice.do?currentPageNo=${currentPageNo+1 }#tabs-2"><button>다음</button></a>
+									<a href="notice.do?currentPageNo=${currentPageNo+1 }#tabs-2"><button class="numKey1">다음</button></a>
 								</c:if>
 							</td>
 							</tr>
@@ -151,12 +165,14 @@
 					
 					<table class="inquiry_pwd">
 						<colgroup>
+							<col width="15%;"/>
 							<col width="auto;"/>
 							<col width="10%;"/>
 							<col width="7%;"/>
 						</colgroup>
 						<thead>
 							<tr>
+								<th>작성자</th>
 								<th>제목</th>
 								<th>등록일</th>
 								<th>조회수</th>
@@ -165,17 +181,18 @@
 						<tbody>
 							<c:forEach var="fdto" items="${inquiry }">
 							<tr class="item">
+								<td>${fdto.id }</td>
 								<td id="sc_tit">${fdto.ftitle }</td>
 								<td>${fdto.fregdate }</td>
 								<td>${fdto.fhits }</td>
 							</tr>
 							<tr	class="hide">
 							<form action="noticeDetail_inquiry.do?fno=${fdto.fno }" id="delForm" > 
-								<td>
-									비밀번호 : <input type="password" name="fpwd" id="fpwd" />
+								<td style="font-weight: bold;" colspan="2">
+									비밀번호 : <input type="password" name="fpwd" id="fpwd" style="height: 20px;" />
 									<input type="hidden" name="fno"  value="${fdto.fno }" />
 								</td>
-								<td colspan="2"><input type="button" id="passChk" onclick="test(this);" value="입력"></td>
+								<td colspan="2"><input type="button" class="numKey1" id="passChk" onclick="pass(this);" value="입력"></td>
 							  </form> 
 							</tr>
 							</c:forEach>
@@ -183,11 +200,11 @@
 							<tr>
 						<!-- 페이지 넘버 -->
 								<td colspan="4"><c:if test="${prev2 }">
-										<a href="notice.do?currentPageNo=${currentPageNo -1}#tabs-3"><button type="button">이전</button></a>
+										<a href="notice.do?currentPageNo=${currentPageNo -1}#tabs-3"><button type="button" class="numKey1">이전</button></a>
 									</c:if> <c:forEach var="no" begin="${startPageNo2 }" end="${endPageNo2 }">
-										<a href="notice.do?currentPageNo=${no }#tabs-3"><button>${no }</button></a>
+										<a href="notice.do?currentPageNo=${no }#tabs-3"><button class="numKey">${no }</button></a>
 									</c:forEach> <c:if test="${next2 }">
-										<a href="notice.do?currentPageNo=${currentPageNo }#tabs-3"><button type="button">다음</button></a>
+										<a href="notice.do?currentPageNo=${currentPageNo }#tabs-3"><button type="button" class="numKey1">다음</button></a>
 									</c:if>
 								</td>
 							</tr>
