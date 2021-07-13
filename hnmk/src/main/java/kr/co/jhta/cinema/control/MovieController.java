@@ -76,13 +76,15 @@ public class MovieController {
 			/////////추가내용///////////
 			
 			// 코멘트작성하려할때 로그인이 안되어있으면 불가
+			// location.href 에 파라미터값 영화번호 를 추가해주기위한 변수
+			
+			model.addAttribute("mno", no);
 			Object obj = session.getAttribute("id");
 			if (obj != null) { // 로그인이 되어있을때만 실행, 로그인이 안되어있으면 아래값들이 null값이 뜨기때문에 필수코드
+				model.addAttribute("mno", no);
 				String id = (String) obj;
 				model.addAttribute("id", obj);
 				// 코멘트작성하려할때 confilm창에서 취소를하면 현재 디테일페이지가보여줘야하기때문에
-				// location.href 에 파라미터값 영화번호 를 추가해주기위한 변수
-				model.addAttribute("mno", no);
 
 				// 코멘트작성하려할때 로그인은되어있는데 본인이 관람한 영화가아닐시에 불가
 

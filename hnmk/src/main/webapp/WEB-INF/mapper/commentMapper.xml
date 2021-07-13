@@ -5,7 +5,7 @@
 
   <mapper namespace="kr.co.jhta.cinema">
      <select id="commentAll" parameterType="int" resultType="comedto">
-        SELECT mcno, mcgrade, mccontents, mcregdate, customerno, mno
+        SELECT mcno, mcgrade, mccontents, mcregdate, customerno, mno 
         from mcomment
         where mno = #{mno}
      </select>

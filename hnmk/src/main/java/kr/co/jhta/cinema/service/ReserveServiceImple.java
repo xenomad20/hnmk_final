@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.jhta.cinema.dao.ReserveDAO;
+import kr.co.jhta.cinema.dto.CommentDTO;
 import kr.co.jhta.cinema.dto.CustomerDTO;
 import kr.co.jhta.cinema.dto.NoticeDTO;
 import kr.co.jhta.cinema.dto.ReserveDTO;
@@ -63,6 +64,11 @@ public class ReserveServiceImple implements ReserveService {
 	@Override
 	public List<NoticeDTO> selectFAQ(int customerno) {
 		return dao.selectFAQ(customerno);
+	}
+
+	@Override
+	public List<CommentDTO> selectComment(int customerno) {
+		return dao.selectComment(customerno);
 	}
 	
 	
