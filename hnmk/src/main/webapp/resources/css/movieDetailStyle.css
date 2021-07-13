@@ -270,6 +270,9 @@ button:focus, input:focus, textarea:focus, select:focus {
 	text-align: center;
 }
 
+#review_detail{
+	margin: auto;
+}
 #review {
 	width: 600px;
 	height: 30px;
@@ -282,4 +285,5 @@ button:focus, input:focus, textarea:focus, select:focus {
 	border-style: none;
 	height: 30px;
 	cursor: pointer;
+	
 }

@@ -39,12 +39,6 @@ public class MovieController {
 	@Autowired
 	MovieDetailService mds;
 	@Autowired
-<<<<<<< HEAD
-	CommentService cms;
-	@Autowired
-	CustomerService cs;
-	
-=======
 	CommentService cs;
 	@Autowired
 	CustomerService cus;
@@ -53,7 +47,6 @@ public class MovieController {
 	@Autowired
 	TheaterService ts;
 
->>>>>>> branch 'master' of https://github.com/xenomad20/hnmk_final.git
 	@RequestMapping("/movie")
 	public String movieShow(Model model) {
 
@@ -79,13 +72,6 @@ public class MovieController {
 		} else {
 			int no = Integer.parseInt(mno);
 			MovieDetailInfoDTO mdList = mds.readDetailOne(no);
-<<<<<<< HEAD
-			List<CommentDTO> cList = cms.readAll(no);
-			//comment가 없을 때
-=======
-			List<CommentDTO> cList = cs.readAll(no);
-			// comment가 없을 때
->>>>>>> branch 'master' of https://github.com/xenomad20/hnmk_final.git
 			
 			//버튼 누를 때 로그인 여부 확인
 			//비로그인 시 > 로그인으로 > 
@@ -94,6 +80,7 @@ public class MovieController {
 			
 			/////////추가내용///////////
 			
+			model.addAttribute("mno", no);
 			// 코멘트작성하려할때 로그인이 안되어있으면 불가
 			Object obj = session.getAttribute("id");
 			if (obj != null) { // 로그인이 되어있을때만 실행, 로그인이 안되어있으면 아래값들이 null값이 뜨기때문에 필수코드
@@ -101,7 +88,6 @@ public class MovieController {
 				model.addAttribute("id", obj);
 				// 코멘트작성하려할때 confilm창에서 취소를하면 현재 디테일페이지가보여줘야하기때문에
 				// location.href 에 파라미터값 영화번호 를 추가해주기위한 변수
-				model.addAttribute("mno", no);
 
 				// 코멘트작성하려할때 로그인은되어있는데 본인이 관람한 영화가아닐시에 불가
 
@@ -123,34 +109,10 @@ public class MovieController {
 			}
 			////////////////////////////////////////////////////////
 			model.addAttribute("mdList", mdList);
-			model.addAttribute("cList", cList);
 		}
 
 		return "/movieDetail";
 	}
-	
-<<<<<<< HEAD
-//	//ajax로 정보 가져온 다음, 값 넣기
-//	
-//	@ResponseBody
-//	@RequestMapping(value="/comment_insert", method=RequestMethod.POST)
-//	public String comment_login(Model model, CustomerDTO dto, HttpSession session) {
-//		Object obj = session.getAttribute("id");
-//		if(obj!=null) {
-//			String id = (String)obj;
-//			
-//			dto = cs.selectInfo(id);
-//			model.addAttribute("cdto",dto);
-//			
-//			return "/comment_insert";
-//		}else {
-//			
-//			return "redirect:loginForm.do";
-//		}
-//	}
-//	
-//	
-=======
 	//코멘트 테이블에 insert
 	@PostMapping("/detail")
 	public String comment(@RequestParam("customerno")int customerno,
@@ -168,6 +130,4 @@ public class MovieController {
 		
 		return"redirect:detail?mno="+mmno;
 	}
-	
->>>>>>> branch 'master' of https://github.com/xenomad20/hnmk_final.git
 }
