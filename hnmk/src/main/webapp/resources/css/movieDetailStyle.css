@@ -287,3 +287,8 @@ button:focus, input:focus, textarea:focus, select:focus {
 	cursor: pointer;
 	
 }
+
+.comment_detail{
+	margin-left: 100px;
+	margin-top: 10px;
+}

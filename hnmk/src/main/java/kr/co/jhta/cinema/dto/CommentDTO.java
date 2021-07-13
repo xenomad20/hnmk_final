@@ -12,6 +12,7 @@ import lombok.ToString;
 public class CommentDTO {
 	
 	int mcno;
+	String id;
 	int mcgrade;
 	String mccontents;
 	String mcregdate;

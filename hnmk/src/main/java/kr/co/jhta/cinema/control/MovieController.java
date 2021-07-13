@@ -72,7 +72,7 @@ public class MovieController {
 		} else {
 			int no = Integer.parseInt(mno);
 			MovieDetailInfoDTO mdList = mds.readDetailOne(no);
-			
+			List<CommentDTO> cmList = cs.readAll(no);
 			//버튼 누를 때 로그인 여부 확인
 			//비로그인 시 > 로그인으로 > 
 			//						로그인 시 > 코멘트 입력
@@ -109,6 +109,7 @@ public class MovieController {
 			}
 			////////////////////////////////////////////////////////
 			model.addAttribute("mdList", mdList);
+			model.addAttribute("cmList", cmList);
 		}
 
 		return "/movieDetail";

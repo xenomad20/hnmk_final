@@ -140,7 +140,16 @@ $(function() {
 								placeholder="타인을 비방하거나 스포일러는 삭제 될 수 있음으로 유의해주세요." />
 							<button type="button" id="btn">작성</button>
 							</p>
-							<p></p>
+							<!-- 코멘트 불러오는 부분 -->
+							<c:forEach var="cmList" items="${cmList }">
+							<div class="comment_detail">
+								<span>작성자 ${cmList.id }</span>
+								<span>평점 : ${cmList.mcgrade }</span>
+								<span>${cmList.mccontents }</span>
+								<span>${cmList.mcregdate }</span>
+							</div>	
+							
+							</c:forEach>	
 						</div>
 					</div>
 				</div>
