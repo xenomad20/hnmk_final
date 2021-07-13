@@ -337,20 +337,29 @@ li a:hover {
 						<h2>나의 관람평</h2>
 						<table id="table3">
 							<tr>
-								<th>영화제목</th>
 								<th>영화</th>
 								<th>영화평점</th>
 								<th>내용</th>
 								<th>등록일</th>
 							</tr>
-							
-								<tr>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
+							<c:forEach var="co" items="${colist}">
+						 <c:set var="colist" value="${co.mno}"></c:set>
+						 <c:choose>
+						  <c:when test="${not empty colist}">
+							<tr>
+								<td>${co.mtitle}</td>
+								<td>${co.mcgrade }점</td>
+								<td>${co.mccontents}</td>
+								<td>${co.mcregdate}</td>
+							</tr>
+						   </c:when>
+						  	<c:when test="${empty colist}">	
+						   <tr>
+							 <td colspan="4">관람평 작성 내역이 없습니다.</td>
+						   </tr>
+						   </c:when>
+						</c:choose>	
+						</c:forEach>
 						</table>
 					</div>
 
