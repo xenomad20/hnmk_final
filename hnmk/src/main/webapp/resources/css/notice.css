@@ -17,23 +17,22 @@ a {
 .contents {
 	width: 1100px;
 	margin: 0 auto;
-	padding: 50px 0 0 0;
 }
 
 .title_top {
-	margin-bottom: 20px;
+	
 	padding: 25px 0 14px;
 	border-bottom: 1px solid #EEE;
-	background-color: silver;
+	background-color: #414141;
+	height: 60px;
 }
 
 .title_top h1 {
 	text-align: center;
-	font-size: 24px;
+	font-size: 30px;
 }
 
 .tab_wrap {
-	padding-top: 20px;
 	height: 80px;
 	position: relative;
 	box-sizing: initial;
@@ -55,19 +54,20 @@ a {
 	width: 33.3%;
 	left: 0%;
 	line-height: 50px;
-	font-size: 30px;
+	font-size: 40px;
 	border: none;
 	top: 0;
 	cursor: pointer;
 	float: left;
-	height: 77px;
+	height: 80px;
 }
 
 .tab_inquiry {
-	text-align: center;
-	padding: 0 25px;
-	margin: 0 auto;
-	background-color: #F8F8F8;
+	font-size: 20px;
+    text-align: center;
+    padding: 0 25px;
+    margin: 0 auto;
+    margin-top: 30px;
 }
 
 .tab_inquiry p {
@@ -91,7 +91,26 @@ a {
 }
 #important a{
 	color: #ff0000;
+	font-weight: bold;
 }
 .notice_tit a{
 	color: #000;
+}
+.numKey{
+	background-color: #414141;
+    color: white;
+    width: 28px;
+    height: 28px;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.numKey1{
+	background-color: #414141;
+    color: white;
+    width: 49px;
+    height: 28px;
+    font-size: 17px;
+    border-radius: 4px;
+    cursor: pointer;
 }

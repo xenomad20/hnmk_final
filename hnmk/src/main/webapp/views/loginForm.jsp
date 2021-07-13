@@ -37,6 +37,12 @@ table {
 	alignment: center;
 }
 
+#register {
+	display: flex;
+	justify-content: center;
+	margin-left: 20px;
+}
+
 </style>
 
 </head>
@@ -52,12 +58,12 @@ table {
 				<table>
 					<tr>
 						<th>아이디</th>
-						<td><input type="text" name="id" id="id" value="younee" required /> </td>
+						<td><input type="text" name="id" id="id" value="" required /> </td>
 					</tr>
 					<tr>
 						<th>비밀번호</th>
 						<td>
-						<input type="password" name="pw" id="pw" value="1234" required />
+						<input type="password" name="pw" id="pw" value="" required />
 						</td>
 					</tr>
 					<tr>
@@ -65,11 +71,11 @@ table {
 						</td>
 					</tr>
 					<tr>
-						<td>
-						<a href="/hnmk/joinForm.do"><font color="#c52f3a">회원가입  | </font></a>  
+						<td id="register">
+						<a href="/hnmk/joinForm.do"><font size="2" color="gray">회원가입  | </font></a>  
 						</td>
 						<td>
-						<a href="/hnmk/idpwFindForm.do"><font color="#c52f3a">아이디/비밀번호 찾기</font></a>
+						<a href="/hnmk/idpwFindForm.do"><font size="2" color="gray">아이디/비밀번호 찾기</font></a>
 						</td>
 					</tr>
 					<tr>

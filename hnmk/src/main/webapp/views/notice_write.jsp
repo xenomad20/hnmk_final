@@ -74,7 +74,7 @@
 						<th>
 						<span id="star">*</span> 제목
 						<input type="hidden" name="ftype" value="1:1문의" />
-						<input type="hidden" name="customerno" value="3" /><!-- 회원테이블이랑 연결? -->
+						<input type="hidden" name="customerno" value="${cdto.customerno }"/>
 						</th>
 						<td>
 							<input type="text" id="ntit" name="ftitle" placeholder="문의 제목을 입력해주세요." /> 
@@ -94,7 +94,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<input type="button" value="취소" id="reset" />
+							<a href="notice.do"><input type="button" value="취소" id="reset" /></a>
 							<input type="submit" value="확인" id="ok"/>
 						</td>
 					</tr>

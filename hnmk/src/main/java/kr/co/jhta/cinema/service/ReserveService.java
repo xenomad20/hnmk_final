@@ -2,6 +2,7 @@ package kr.co.jhta.cinema.service;
 
 import java.util.List;
 
+import kr.co.jhta.cinema.dto.CommentDTO;
 import kr.co.jhta.cinema.dto.CustomerDTO;
 import kr.co.jhta.cinema.dto.NoticeDTO;
 import kr.co.jhta.cinema.dto.ReserveDTO;
@@ -27,4 +28,6 @@ public interface ReserveService {
 	public void cancelSeatno(String seatno);
 	//나의 문의내역 customerController 마이페이지에서사용
 	public List<NoticeDTO> selectFAQ(int customerno);
+	//나의 관람평들 customerController 마이페이지에서 사용
+	public List<CommentDTO> selectComment(int customerno);
 }

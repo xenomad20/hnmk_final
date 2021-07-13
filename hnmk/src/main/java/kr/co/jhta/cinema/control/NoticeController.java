@@ -2,6 +2,7 @@ package kr.co.jhta.cinema.control;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
-
+import kr.co.jhta.cinema.dto.CustomerDTO;
 import kr.co.jhta.cinema.dto.NoticeDTO;
+import kr.co.jhta.cinema.service.CustomerService;
 import kr.co.jhta.cinema.service.NoticeService;
 
 @Controller
@@ -21,16 +23,21 @@ public class NoticeController {
 
 	@Autowired
 	NoticeService ns;
+	
+	@Autowired
+	CustomerService cs;
 
 	@GetMapping("/notice.do")
-	public String notice(Model model, @RequestParam(name = "currentPageNo", defaultValue = "1") int currentPageNo) {
+	public String notice(CustomerDTO dto,HttpSession session, Model model, @RequestParam(name = "currentPageNo", defaultValue = "1") int currentPageNo) {
 
 		// 페이지당 게시물 수
-		int countPerPage = 5;
+		int countPerPage = 7;
 		// 시작번호
 		int startNo = (currentPageNo - 1) * countPerPage + 1;
 		// 끝번호
 		int endNo = currentPageNo * countPerPage;
+		
+
 
 		// 							FAQ
 		// 고객센터 FAQ 모두 list에 담아주기
@@ -40,9 +47,15 @@ public class NoticeController {
 		
 		
 		//					1:1문의
+		// 페이지당 게시물 수
+		int countPerPage2 = 7;
+		// 시작번호
+		int startNo2 = (currentPageNo - 1) * countPerPage2 + 1;
+		// 끝번호
+		int endNo2 = currentPageNo * countPerPage2;
 		// 총 페이지 수
 		int totalCount2 = ns.inquiryData();
-		int totalPage2 = (totalCount2 % countPerPage == 0) ? totalCount2 / countPerPage : totalCount2 / countPerPage + 2;
+		int totalPage2 = (totalCount2 % countPerPage2 == 0) ? totalCount2/countPerPage2 : totalCount2/countPerPage2 + 1;
 
 		// 페이지 시작 번호
 		int startPageNo2 = currentPageNo - 5 <= 0 ? 1 : currentPageNo - 5;
@@ -50,14 +63,15 @@ public class NoticeController {
 		int endPageNo2 = (startPageNo2 + 10 >= totalPage2) ? totalPage2 : startPageNo2 + 10;
 
 		// 이전버튼
-		boolean prev2 = currentPageNo > 1 ? true : false;
+		boolean prev2 = currentPageNo > 3 ? true : false;
 		// 다음버튼
-		boolean next2 = currentPageNo + 1 >= totalPage2 ? false : true;
+		boolean next2 = currentPageNo + 3 >= totalPage2 ? false : true;
 
 		// 파라미터로 담아주기
-		model.addAttribute("startNo2", startNo);
-		model.addAttribute("endNo2", endNo);
-		model.addAttribute("countPerPage2", countPerPage);
+		model.addAttribute("currentPageNo2" + currentPageNo);
+		model.addAttribute("startNo2", startNo2);
+		model.addAttribute("endNo2", endNo2);
+		model.addAttribute("countPerPage2", countPerPage2);
 		model.addAttribute("totalCount2", totalCount2);
 		model.addAttribute("totalPage2", totalPage2);
 		model.addAttribute("prev2", prev2);
@@ -65,17 +79,23 @@ public class NoticeController {
 		model.addAttribute("startPageNo2", startPageNo2);
 		model.addAttribute("endPageNo2", endPageNo2);
 		
-		List<NoticeDTO> inquiry = ns.inquiryAll(startNo, endNo);
+		List<NoticeDTO> inquiry = ns.inquiryAll(startNo2, endNo2);
 		model.addAttribute("inquiry",inquiry);
-		
 		
 				
 		
 
 		// 							공지사항
+		// 페이지당 게시물 수
+		int countPerPage1 = 7;
+		// 시작번호
+		int startNo1 = (currentPageNo - 1) * countPerPage1 + 1;
+		// 끝번호
+		int endNo1 = currentPageNo * countPerPage1;
+		
 		// 총 페이지 수
 		int totalCount1 = ns.NoticeTotal();
-		int totalPage1 = (totalCount1 % countPerPage == 0) ? totalCount1 / countPerPage : totalCount1 / countPerPage + 1;
+		int totalPage1 = (totalCount1 % countPerPage1 == 0) ? totalCount1 / countPerPage1 : totalCount1 / countPerPage1 + 1;
 
 		// 페이지 시작 번호
 		int startPageNo1 = currentPageNo - 5 <= 0 ? 1 : currentPageNo - 5;
@@ -88,9 +108,10 @@ public class NoticeController {
 		boolean next1 = currentPageNo + 1 >= totalPage1 ? false : true;
 
 		// 파라미터로 담아주기
-		model.addAttribute("startNo1", startNo);
-		model.addAttribute("endNo1", endNo);
-		model.addAttribute("countPerPage1", countPerPage);
+		model.addAttribute("currentPageNo1" + currentPageNo);
+		model.addAttribute("startNo1", startNo1);
+		model.addAttribute("endNo1", endNo1);
+		model.addAttribute("countPerPage1", countPerPage1);
 		model.addAttribute("totalCount1", totalCount1);
 		model.addAttribute("totalPage1", totalPage1);
 		model.addAttribute("prev1", prev1);
@@ -98,12 +119,23 @@ public class NoticeController {
 		model.addAttribute("startPageNo1", startPageNo1);
 		model.addAttribute("endPageNo1", endPageNo1);
 		
-		List<NoticeDTO> notice = ns.noticeAll(startNo, endNo);
+		List<NoticeDTO> notice = ns.noticeAll(startNo1, endNo1);
 		model.addAttribute("notice", notice);
 		
 		// important공지사항
 		List<NoticeDTO> importantOne = ns.importantOne();
 		model.addAttribute("important",importantOne);
+		
+		// id의 customerno 가져오기
+		Object obj = session.getAttribute("id");
+		if(obj!=null) {
+			String id = (String)obj;
+			
+			CustomerDTO cdto = cs.selectInfo(id);
+			model.addAttribute("cdto",cdto);
+			model.addAttribute("id", id);
+		}
+		
 
 		return "notice";
 	}
@@ -121,8 +153,19 @@ public class NoticeController {
 	
 	// 1:1문의 쓰기
 	@GetMapping("/notice_write.do")
-	public String write() {
-		return "notice_write";
+	public String write(Model model, CustomerDTO dto, HttpSession session) {
+		Object obj = session.getAttribute("id");
+		if(obj!=null) {
+			String id = (String)obj;
+			
+			dto = cs.selectInfo(id);
+			model.addAttribute("cdto",dto);
+			
+			return "notice_write";
+		}else {
+			
+			return "redirect:loginForm.do";
+		}
 	}
 	// 1:1문의 쓰기
 	@PostMapping("/notice_write.do")
@@ -133,14 +176,22 @@ public class NoticeController {
 	
 	// 1:1문의 보기
 	@GetMapping("/noticeDetail_inquiry.do")
-	public String inquiry(@RequestParam(value = "fno" ,required = false, defaultValue = "0")int fno,Model model) {
-		model.addAttribute("inquiryOne",ns.inquiryOne(fno));
-		model.addAttribute("answer",ns.answerAll(fno));
-		
-		// 조회수 업데이트
-		ns.faqUpdateHits(fno);
-		return "noticeDetail_inquiry";
-		
+	public String inquiry(@RequestParam(value = "fno" ,required = false, defaultValue = "0")int fno,Model model, CustomerDTO dto, HttpSession session) {
+		Object obj = session.getAttribute("id");
+		if(obj!=null) {
+			String id = (String)obj;
+			
+			dto = cs.selectInfo(id);
+			model.addAttribute("cdto",dto);
+			model.addAttribute("inquiryOne",ns.inquiryOne(fno));
+			model.addAttribute("answer",ns.answerAll(fno));
+			
+			// 조회수 업데이트
+			ns.faqUpdateHits(fno);
+			return "noticeDetail_inquiry";
+		}else {
+			return "redirect:loginForm.do";
+		}
 	}
 	
 	// 1:1문의 댓글달기

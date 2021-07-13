@@ -144,6 +144,10 @@
     border: none; 
 }
 
+#agreementDiv textarea {
+	width: 98%;
+}
+
 #joinInfoDiv {
     width: 1100px;
     heignt: 400px;
@@ -158,15 +162,8 @@
 }
 
 #registerbtn {
-	width: 200px;
-	height: 25px;
-	margin-top: 20px;
-	margin-left: 30px;
-	alignment: center;
-}
-
-#registerbtn {
-	margin-left: 700px;
+	display: flex;
+	justify-content: center;
 }
 
 </style>
@@ -208,7 +205,7 @@
 					<tr>
 						<td>아이디</td>
 						<td>
-							<input type="text" id="id" name="id" value="younee" maxlength="20" />
+							<input type="text" id="id" name="id" value="" maxlength="20" />
 							<button type="button" id="idDupCheck" onclick="fn_idDupCheck();" value="N">중복확인</button>
 						</td>
 					</tr>
@@ -216,45 +213,45 @@
 					<tr>
 						<td>비밀번호</td>
 						<td>
-							<input type="password" id="pwd" name="pwd" value="1234" maxlength="15" />
+							<input type="password" id="pwd" name="pwd" value="" maxlength="15" />
 						</td>
 					</tr>
 					
 					<tr>
 						<td>비밀번호 확인</td>
 						<td>
-							<input type="password" id="pwdCheck" name="pwdCheck" value="1234" maxlength="15" />
-							<div class="valid">비밀번호를 다시 입력하세요</div>
+							<input type="password" id="pwdCheck" name="pwdCheck" value="" maxlength="15" />
+							<div class="valid"><font size="2" color="gray">비밀번호를 다시 입력하세요</font></div>
 						</td>
 					</tr>
 					
 					<tr>
 						<td>이름</td>
 						<td>
-							<input type="text" id="name" name="name" value="전유니" maxlength="40" />
+							<input type="text" id="name" name="name" value="" maxlength="40" />
 						</td>
 					</tr>
 					
 					<tr>
 						<td>생년월일</td>
 						<td>
-							<input type="text" id="birth" name="birth" value="19900108" maxlength="40" />
-							<div class="valid">공백 없이 입력하세요 예)19800101</div>
+							<input type="text" id="birth" name="birth" value="" maxlength="40" />
+							<div class="valid"><font size="2" color="gray">공백 없이 입력하세요 예)19800101</font></div>
 						</td>
 					</tr>
 					
 					<tr>
 						<td>휴대전화</td>
 						<td>
-							<input type="text" id="hp" name="hp" value="01039459311" maxlength="30" />
-							<div class="valid">공백 없이 입력하세요 예)01012345678</div>
+							<input type="text" id="hp" name="hp" value="" maxlength="30" />
+							<div class="valid"><font size="2" color="gray">공백 없이 입력하세요 예)01012345678</font></div>
 						</td>
 					</tr>
 					
 					<tr>
 						<td>이메일</td>
 						<td>
-							<input type="text" id="email" name="email" value="xenomad20@gmail.com" maxlength="30" />
+							<input type="text" id="email" name="email" value="" maxlength="30" />
 						</td>
 					</tr>
 					
@@ -270,7 +267,7 @@
 				</table>
 			</div>			
 			<div id="registerbtn">			
-				<input type="button" value="가입하기" style="width: 500px; height: 30px;"onclick="checkValue()" />
+				<input type="button" value="가입하기" style="width:500px; height:30px;"onclick="checkValue()" />
 			</div>
 			<br>
 			<br>
@@ -279,6 +276,6 @@
 		</form>
 	</div>
 	</main>
-	<%@ include file="/views/footer.jsp" %>
+<%@ include file="/views/footer.jsp" %>
 </body>
 </html>

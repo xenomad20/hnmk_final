@@ -3,12 +3,12 @@
 /* 
 #c52f3a : 버건디
  */
-body{
+body {
 	margin: 0 auto;
 }
 
 /* header-top line */
-.top_line{
+.top_line {
 	width: 1100px;
 	height: 30px;
 	background-color: black;
@@ -16,91 +16,98 @@ body{
 	display: table-cell;
 	vertical-align: middle;
 }
-ul{
+
+ul {
 	list-style: none;
 }
-li{
-	float:left;
+
+li {
+	float: left;
 	margin-left: 5px;
 }
 
-li a{
+li a {
 	color: white;
 }
+
 li a:hover {
 	color: red;
 }
 
 /* 영화소개 upper */
-.body_wrapper{
+.body_wrapper {
 	width: 1100px;
 	margin: auto;
 	/* padding: 50px 0 0 0; */
 	display: grid;
 	place-items: center;
-	
 }
-.contents_wrapper{
-	width:1100px;
-}	
-.movie_detail{
+
+.contents_wrapper {
+	width: 1100px;
+}
+
+.movie_detail {
 	margin: auto;
 	padding-top: 50px;
-	width:1000px;
+	width: 1000px;
 	display: table;
-	height:400px;
-/* 	background-color: aqua; */
-	
-	
-}	
+	height: 400px;
+	/* 	background-color: aqua; */
+}
 
 /* 영화소개 - 포스터  */
-.poster{
-	 float:left;
-	 padding-top: 30px;
-	 padding-left: 10px;
+.poster {
+	float: left;
+	padding-top: 30px;
+	padding-left: 10px;
 }
-#poster_img{
+
+#poster_img {
 	width: 230px;
 	height: 330px;
 }
 /* 영화소개 - 설명 */
-.contents_info{
- 	float:left; 
+.contents_info {
+	float: left;
 	padding-top: 30px;
 	padding-left: 30px;
 	width: 700px;
 	height: 350px;
 }
-.contents_info p{
+
+.contents_info p {
 	margin: 0 auto;
 	padding: 10 0 0 0;
-
-	
 }
-.filmgrade{
+
+.filmgrade {
 	display: inline;
 }
-#filmgrade_img{
+
+#filmgrade_img {
 	width: 25px;
-   	height: 25px;
-   	padding-top: 3px;
-   	margin: 0;
+	height: 25px;
+	padding-top: 3px;
+	margin: 0;
 }
-.title{
+
+.title {
 	/* background-color: orange; */
-}
-.tit{
-	font-size: 25px;
-	font-weight: bold;
 	
 }
-.tit_eng{
+
+.tit {
+	font-size: 25px;
+	font-weight: bold;
+}
+
+.tit_eng {
 	font-size: 15px;
 	color: gray;
 }
 
-.rating{
+.rating {
 	padding-top: 10px;
 	padding-bottom: 15px;
 	/* background: lime; */
@@ -108,14 +115,17 @@ li a:hover {
 	border-bottom-width: 0.5px;
 	border-bottom-color: silver;
 }
-.profile_detail_info{
+
+.profile_detail_info {
 	/* background-color: yellow; */
 	padding-top: 20px;
 }
-.detail_info{
+
+.detail_info {
 	padding-bottom: 5px;
 }
-.btn_reserve{
+
+.btn_reserve {
 	margin-top: 30px;
 	/* float: right; */
 	width: 150px;
@@ -124,124 +134,161 @@ li a:hover {
 	border-radius: 5px 5px 5px 5px;
 	font-weight: bold;
 	font-size: 20px;
-	color:white;
+	color: white;
 	text-align: center;
 	line-height: 50px;
 	border: none;
 }
 
-
 /* 영화소개 bottom */
-
-.movie_tabs{
-	width:1000px;
-	height:400px;
+.movie_tabs {
+	width: 1000px;
+	height: 400px;
 	display: table-cell;
 	vertical-align: middle;
-	border:none;
+	border: none;
 }
 
 /* css : https://codepen.io/flkt-crnpio/pen/WxROwy/ */
-.tab-2 a{
-    background: #fd264f;
-    color: black;
-    display: block;
-    font-size: 12px;
-    line-height: 1em;
-    margin: 0;
-    padding: 5px 110px;
-    position: fixed;
-    top: 20px;
-    right: -100px;
-    text-align: center;
-    text-decoration: none;
-    transform: rotate(45deg);
+.tab-2 a {
+	background: #fd264f;
+	color: black;
+	display: block;
+	font-size: 12px;
+	line-height: 1em;
+	margin: 0;
+	padding: 5px 110px;
+	position: fixed;
+	top: 20px;
+	right: -100px;
+	text-align: center;
+	text-decoration: none;
+	transform: rotate(45deg);
 }
 
-button:focus,
-input:focus,
-textarea:focus,
-select:focus {
-  outline: none; }
-.tabs p{
+button:focus, input:focus, textarea:focus, select:focus {
+	outline: none;
+}
+
+.tabs p {
 	width: 800px;
 	margin: auto;
 	margin-top: 30px;
 }
+
 .tabs {
-  width: 1000px;
-  display: block;
-  display: -webkit-flex;
-  display: -moz-flex;
-  display: flex;
-  -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
-  flex-wrap: wrap;
-  margin: auto;
-  overflow: hidden; }
-  .tabs [class^="tab"] label,
-  .tabs [class*=" tab"] label {
-    cursor: pointer;
-    display: block;
-    font-size: 1.1em;
-    font-weight: 300;
-    line-height: 1em;
-    padding: 2rem 0;
-    text-align: center; }
-  .tabs [class^="tab"] [type="radio"],
-  .tabs [class*=" tab"] [type="radio"] {
-    border-bottom: 1px solid rgba(239, 237, 239, 0.5);
-    cursor: pointer;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    display: block;
-    width: 100%;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out; }
-    .tabs [class^="tab"] [type="radio"]:hover, .tabs [class^="tab"] [type="radio"]:focus,
-    .tabs [class*=" tab"] [type="radio"]:hover,
-    .tabs [class*=" tab"] [type="radio"]:focus {
-      border-bottom: 1px solid #fd264f; }
-    .tabs [class^="tab"] [type="radio"]:checked,
-    .tabs [class*=" tab"] [type="radio"]:checked {
-      border-bottom: 2px solid #fd264f; }
-    .tabs [class^="tab"] [type="radio"]:checked + div,
-    .tabs [class*=" tab"] [type="radio"]:checked + div {
-      opacity: 1; }
-    .tabs [class^="tab"] [type="radio"] + div,
-    .tabs [class*=" tab"] [type="radio"] + div {
-      display: block;
-      opacity: 0;
-      padding: 2rem 0;
-      width: 90%;
-      -webkit-transition: all 0.3s ease-in-out;
-      -moz-transition: all 0.3s ease-in-out;
-      -o-transition: all 0.3s ease-in-out;
-      transition: all 0.3s ease-in-out; }
-  .tabs .tab-2 {
-    width: 50%; }
-    .tabs .tab-2 [type="radio"] + div {
-      width: 200%;
-      margin-left: 200%; }
-    .tabs .tab-2 [type="radio"]:checked + div {
-      margin-left: 0; }
-    .tabs .tab-2:last-child [type="radio"] + div {
-      margin-left: 100%; }
-    .tabs .tab-2:last-child [type="radio"]:checked + div {
-      margin-left: -100%; }
-      
-      
-  #review{
-  	width: 600px;
-  	height: 30px;
-  }
-  #btn{
-  	background-color: red;
-  	color: white;
-  	width:50px;
-  	border-style: none;
-  	height: 30px;
-  }
+	width: 1000px;
+	display: block;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: flex;
+	-webkit-flex-wrap: wrap;
+	-moz-flex-wrap: wrap;
+	flex-wrap: wrap;
+	margin: auto;
+	overflow: hidden;
+}
+
+.tabs [class^="tab"] label, .tabs [class*=" tab"] label {
+	cursor: pointer;
+	display: block;
+	font-size: 1.1em;
+	font-weight: 300;
+	line-height: 1em;
+	padding: 2rem 0;
+	text-align: center;
+}
+
+.tabs [class^="tab"] [type="radio"], .tabs [class*=" tab"] [type="radio"]
+	{
+	border-bottom: 1px solid rgba(239, 237, 239, 0.5);
+	cursor: pointer;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	display: block;
+	width: 100%;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.tabs [class^="tab"] [type="radio"]:hover, .tabs [class^="tab"] [type="radio"]:focus,
+	.tabs [class*=" tab"] [type="radio"]:hover, .tabs [class*=" tab"] [type="radio"]:focus
+	{
+	border-bottom: 1px solid #fd264f;
+}
+
+.tabs [class^="tab"] [type="radio"]:checked, .tabs [class*=" tab"] [type="radio"]:checked
+	{
+	border-bottom: 2px solid #fd264f;
+}
+
+.tabs [class^="tab"] [type="radio"]:checked+div, .tabs [class*=" tab"] [type="radio"]:checked+div
+	{
+	opacity: 1;
+}
+
+.tabs [class^="tab"] [type="radio"]+div, .tabs [class*=" tab"] [type="radio"]+div
+	{
+	display: block;
+	opacity: 0;
+	padding: 2rem 0;
+	width: 90%;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.tabs .tab-2 {
+	width: 50%;
+}
+
+.tabs .tab-2 [type="radio"]+div {
+	width: 200%;
+	margin-left: 200%;
+}
+
+.tabs .tab-2 [type="radio"]:checked+div {
+	margin-left: 0;
+}
+
+.tabs .tab-2:last-child [type="radio"]+div {
+	margin-left: 100%;
+}
+
+.tabs .tab-2:last-child [type="radio"]:checked+div {
+	margin-left: -100%;
+}
+
+#gr {
+	width: 30px;
+	height: 20px;
+	font-size: 16px;
+	text-align: center;
+}
+
+#review_detail{
+	margin: auto;
+}
+#review {
+	width: 600px;
+	height: 30px;
+}
+
+#btn {
+	background-color: red;
+	color: white;
+	width: 50px;
+	border-style: none;
+	height: 30px;
+	cursor: pointer;
+	
+}
+
+.comment_detail{
+	margin-left: 100px;
+	margin-top: 10px;
+}

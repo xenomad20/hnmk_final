@@ -11,8 +11,11 @@
 
 </head>
 <body>
-
 <div class="detail">
+	<div>
+		<h1 style="color: black; padding: 20px;">공지사항</h1>
+	</div>
+	
 		<table>
 			<thead>
 				<tr>

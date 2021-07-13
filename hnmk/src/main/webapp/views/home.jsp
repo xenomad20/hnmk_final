@@ -13,30 +13,25 @@
 
 	.wrapper1 {
 	width: 1100px;
-	margin: auto;
-	margin-left: 410px;
+    margin: auto;
 	display: flex;
-    justify-content: center;
 	}
 	
 	.wrapper2 {
 	width: 1100px;
-	margin: auto;
-	margin-left: 410px;
+    margin: auto;
 	display: flex;
-    justify-content: center;
 	}
 	
 	.wrapper3 {
 	width: 1110px;
-	margin: auto;
-	margin-left: 400px;
+    margin: auto;
 	display: flex;
-    justify-content: left;
-    border-top: solid;
+	border-top: solid;
     border-bottom: solid;
     margin-top: 50px;
     margin-bottom: 40px;
+
 	}
 	
 	img {
@@ -114,6 +109,10 @@
 	margin-left: 20px;
 	margin-right: 25px;
 	text-align: center;
+	}
+
+	.btn {
+	cursor: pointer;
 	}
 	
 	h2 {
