@@ -112,6 +112,7 @@ button{
     vertical-align: middle;
     background-color: #ffffff;
     min-width: 100px;
+    cursor: pointer;
 }
 #ok{
 	height: 45px;
