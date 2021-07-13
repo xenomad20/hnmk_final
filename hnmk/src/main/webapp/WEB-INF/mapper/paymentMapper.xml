@@ -41,4 +41,12 @@
   		select * from faq
   		where customerno = #{customerno}
   	</select>
+  	
+  	<!-- 나의 관람평 -->
+  	<select id="selectComment" parameterType="int" resultType="comedto">
+  		select mc.mcno,mc.mcgrade,mc.mccontents,mc.mcregdate,mc.customerno,mc.mno,m.mtitle
+  		from mcomment mc , movie m
+  		where mc.mno = m.mno
+  		and mc.customerno = #{customerno}
+  	</select>
   </mapper>

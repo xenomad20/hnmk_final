@@ -13,55 +13,48 @@
 
 <style>
 
-	.contents {
-		width: 1100px;
-	}
-	
-	li {
-		float: left;
-		text-align: left;
-	}
-	
-	.li-gangnam {
-		margin-top: 20px;
-		margin-bottom: 20px;
-		margin-left: 410px;
-	}
-	
-	.li-hongdae {
-		margin-top: 20px;
-		margin-left: 30px;
-	}
-	
-	.li-dongdaemun {
-		margin-top: 20px;
-		margin-left: 30px;
-	}
-	
-	.description {
-		margin-top: 20px;
-		margin-bottom: 20px;
-	}
-	
-	.address {
-		margin-top: 20px;
-		margin-bottom: 20px;
-	}
-	
-	.map {
-		margin-top: 20px;
-		margin-bottom: 20px;
-		margin-left: 100px;
-	}
-	
-	.tab-info {
-		margin-left: 410px;
-	}
-	
-	img {
+.contents {
+	width: 1100px;
+	margin: 0 auto;
+}
+
+.nav {
+	display: flex;
+	justify-content: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.inner-wrap-pt40 img{
+	display: block;
+	margin: 0 auto;
+}
+
+img {
 	width: 1100px;
 	height: 500px;
-	}
+}
+
+div {
+	margin-bottom: 20px;
+}
+
+.address {
+	margin-top: 10px;
+	display: flex;
+}
+
+.address > div:nth-child(1) {
+	margin-right: 10px
+}
+
+.map {
+	display: flex;
+}
+
+.map > div:nth-child(1) {
+	margin-right: 10px
+}
 	
 </style>
 
@@ -74,6 +67,7 @@
 	});
 </script> -->
 <body>
+<main>
 	<!-- 
 	<div id="pageContainer" class="container">
 		<div class="page-util">
@@ -126,11 +120,11 @@
 							<div><img src="resources/images/${theaterOne.cimg}" alt='${theaterOne.location}' /></div>
 						</li>
 						<li class="address">
-							<div>주소</div>
+							<div>주소:</div>
 							<div>${theaterOne.caddress}</div>
 						</li>
 						<li class="map">
-							<div>약도</div>
+							<div>약도:</div>
 							<c:set var="cno" value='${theaterOne.cno}'></c:set>
 							<c:choose>
 							
@@ -153,5 +147,7 @@
 			</div>
 		</div>
 	</div>
+</main>
+<%@ include file="/views/footer.jsp" %>
 </body>
 </html>

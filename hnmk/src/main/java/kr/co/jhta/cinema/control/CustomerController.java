@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.co.jhta.cinema.dto.CommentDTO;
 import kr.co.jhta.cinema.dto.CustomerDTO;
 import kr.co.jhta.cinema.dto.MovieDTO;
 import kr.co.jhta.cinema.dto.NoticeDTO;
@@ -99,7 +100,7 @@ public class CustomerController {
 		cs.joinCustomer(dto);
 
 		System.out.println("회원등록=============================================");
-		return "redirect:home";
+		return "loginForm";
 	}
 
 	// 회원등록시 아이디 중복체크
@@ -122,6 +123,10 @@ public class CustomerController {
 			CustomerDTO cdto= cs.selectInfo(id);
 			model.addAttribute("cdto", cdto);
 			
+			//관렴평
+			List<CommentDTO> colist = rs.selectComment(cdto.getCustomerno());
+			model.addAttribute("colist", colist);
+				
 			//문의내역
 			List<NoticeDTO> nlist = rs.selectFAQ(cdto.getCustomerno());
 			model.addAttribute("nlist", nlist);

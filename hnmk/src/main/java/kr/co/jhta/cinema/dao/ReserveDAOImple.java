@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.jhta.cinema.dto.CommentDTO;
 import kr.co.jhta.cinema.dto.CustomerDTO;
 import kr.co.jhta.cinema.dto.NoticeDTO;
 import kr.co.jhta.cinema.dto.ReserveDTO;
@@ -63,6 +64,11 @@ public class ReserveDAOImple implements ReserveDAO {
 	@Override
 	public List<NoticeDTO> selectFAQ(int customerno) {
 		return ss.selectList("kr.co.jhta.cinema.selectFAQ",customerno);
+	}
+
+	@Override
+	public List<CommentDTO> selectComment(int customerno) {
+		return ss.selectList("kr.co.jhta.cinema.selectComment",customerno);
 	}
 	
 	
