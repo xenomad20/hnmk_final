@@ -21,8 +21,8 @@
 					<tr>
 						<td colspan="2" id="detail_inquiry_tit">${inquiryOne.ftitle }</td>
 						<td>
-							<a href="inquiryModify.do?fno=${inquiryOne.fno }"><button type="button">수정하기</button></a>	
-							<button type="button" id="btn_delete">삭제하기</button>
+							<a href="inquiryModify.do?fno=${inquiryOne.fno }"><button type="button" id="btn_modify">수정</button></a>	
+							<button type="button" id="btn_delete">삭제</button>
 						</td>
 					</tr>
 				</thead>
@@ -41,18 +41,18 @@
 			
 			<table>
 				<colgroup>
-					<col width="15%"/>
-					<col width="auto%"/>
-					<col width="15%%"/>
-					<col width="10%%"/>
+					<col width="15%;"/>
+					<col width="auto;"/>
+					<col width="15%;"/>
+					<col width="10%;"/>
 				</colgroup>
 				<tr >
-					<td>작성자 : <!-- 회원번호테이블에서 id 받아옴 -->
-						<input type="hidden" name="customerno" value="3" /> <!-- id받아오면서 customerno도 받아와서 값으로 넣어줌 -->
+					<td>${cdto.id } : <!-- 회원번호테이블에서 id 받아옴 -->
+						<input type="hidden" name="customerno" value="${inquiryOne.customerno }" /> <!-- id받아오면서 customerno도 받아와서 값으로 넣어줌 -->
 						<input type="hidden" name="fno" value="${inquiryOne.fno }" />	<!-- fno도 조인해서 받아와야 겠네요 -->
 					</td>	
-					<td><textarea name="acontents" id="" cols="30" rows="10"></textarea></td>
-					<td colspan="2"><input type="submit" value="입력" /></td>
+					<td ><textarea name="acontents" id="acontents" cols="30" rows="10"></textarea></td>
+					<td colspan="2"><input type="submit" id="enter" value="입력" /></td>
 				</tr>
 				<c:forEach var="dto" items="${answer }">
 				<tr>

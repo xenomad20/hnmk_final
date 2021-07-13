@@ -25,7 +25,6 @@ div {
 	border-top: 1px solid #BBBBBB;
 	font-weight: bold;
 	padding: 18px;
-	font-size: 15px;
 	line-height: 1.3;
 }
 .detail tbody{
@@ -33,12 +32,17 @@ div {
 	vertical-align: middle;
 	border-color: inherit;
 }
+#detail_tit{
+	font-size: 30px;
+}
 #detail_info{
 	background: #F8F8F8;
 	padding-left: 61px;
+	font-size: 20px;
 }
 #detail_contants{
 	height: 600px;
+	font-size: 18px;
 }
 .detail button{
 		display: inline-block;
