@@ -30,7 +30,7 @@
 		alert("로그인 해주세요!");
 		location.href ="loginForm.do" ;
 	}else{
-		console.log("dd");
+		
 	}		
 } 
 </script>
@@ -131,11 +131,11 @@
 							<tr>
 						<!-- 페이지 넘버 -->
 							<td colspan="4"><c:if test="${prev1 }">
-									<a href="notice.do?currentPageNo=${currentPageNo-1 }#tabs-2"><button class="numKey1">이전</button></a>
+									<a href="notice.do?currentPageNo=${currentPageNo1-1 }#tabs-2"><button class="numKey1">이전</button></a>
 								</c:if> <c:forEach var="no" begin="${startPageNo1 }" end="${endPageNo1 }">
 									<a href="notice.do?currentPageNo=${no }#tabs-2"><button class="numKey">${no }</button></a>
 								</c:forEach> <c:if test="${next1 }">
-									<a href="notice.do?currentPageNo=${currentPageNo+1 }#tabs-2"><button class="numKey1">다음</button></a>
+									<a href="notice.do?currentPageNo=${currentPageNo1+1 }#tabs-2"><button class="numKey1">다음</button></a>
 								</c:if>
 							</td>
 							</tr>
@@ -174,6 +174,7 @@
 								<td style="font-weight: bold;" colspan="2">
 									비밀번호 : <input type="password" name="fpwd" id="fpwd" style="height: 20px;" />
 									<input type="hidden" name="fno"  value="${fdto.fno }" />
+									<input type="hidden" name="id" value="${cdto.id }"" />
 								</td>
 								<td colspan="2"><input type="button" class="numKey1" id="passChk" onclick="pass(this);" value="입력"></td>
 							  </form> 
@@ -183,11 +184,11 @@
 							<tr>
 						<!-- 페이지 넘버 -->
 								<td colspan="4"><c:if test="${prev2 }">
-										<a href="notice.do?currentPageNo=${currentPageNo -1}#tabs-3"><button type="button" class="numKey1">이전</button></a>
+										<a href="notice.do?currentPageNo=${currentPageNo2 -1}#tabs-3"><button type="button" class="numKey1">이전</button></a>
 									</c:if> <c:forEach var="no" begin="${startPageNo2 }" end="${endPageNo2 }">
 										<a href="notice.do?currentPageNo=${no }#tabs-3"><button class="numKey">${no }</button></a>
 									</c:forEach> <c:if test="${next2 }">
-										<a href="notice.do?currentPageNo=${currentPageNo }#tabs-3"><button type="button" class="numKey1">다음</button></a>
+										<a href="notice.do?currentPageNo=${currentPageNo2 +1 }#tabs-3"><button type="button" class="numKey1">다음</button></a>
 									</c:if>
 								</td>
 							</tr>

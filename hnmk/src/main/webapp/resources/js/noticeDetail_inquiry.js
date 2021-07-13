@@ -1,6 +1,7 @@
 function pass(obj){
 	console.log(obj.form[0].value);
 	console.log(obj.form[1].value);
+	console.log(obj.form[2].value);
 	$.ajax({
 		url: "passChk.do",
 		type : "GET",
@@ -9,6 +10,8 @@ function pass(obj){
 		success : function(data){
 			if(data==1){
 				console.log("dddd");
+				location.href = "noticeDetail_inquiry.do?fno="+obj.form[1].value;
+			}else if(obj.form[2].value=="jadmin"){
 				location.href = "noticeDetail_inquiry.do?fno="+obj.form[1].value;
 			}else{
 
