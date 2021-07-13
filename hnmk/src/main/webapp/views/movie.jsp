@@ -20,7 +20,8 @@
    <div id="contents">
       <div class="inner-wrap">
          <div id="tabs">
-            <ul>
+            <ul>	
+      			<!-- 두개의 탭(tabs-1, tabs-2) 중 클릭한 li만 화면에 표현 기본값은 tabs-1  -->
                <li id="movie-tab"><a href="#tabs-1"><button class="btn"
                         id="boxoffice">박스오피스</button></a></li>
                <li id="movie-tab"><a href="#tabs-2"><button class="btn"
@@ -30,6 +31,7 @@
             <div id="tabs-1">
                <div class="movie-list">
                   <ol>
+                  <!-- 상영중인 영화들의 정보를 가져와서 tabs-1에 보여줌 -->
                      <c:forEach var="dto" items="${showList }">
                         <li><img id="poster"
                            src="${pageContext.request.contextPath}/${dto.poster}" alt="" />
@@ -59,6 +61,7 @@
             <div id="tabs-2">
                <div class="movie-list">
                   <ol>
+                  <!-- 상영예정인 영화들의 정보를 가져왓서 tabs-2에 보여줌 -->
                      <c:forEach var="dto" items="${scheduleList }">
                         <li><img id="poster"
                            src="${pageContext.request.contextPath}/${dto.poster}" alt="" />
@@ -85,9 +88,6 @@
                   </ol>
                </div>
             </div>
-         </div>
-         <div class="btn-more">
-            <!-- <button type="button" class="btn" id="btnAddMovie">더보기</button> -->
          </div>
       </div>
    </div>

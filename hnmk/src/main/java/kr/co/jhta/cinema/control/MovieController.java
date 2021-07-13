@@ -48,16 +48,15 @@ public class MovieController {
 	TheaterService ts;
 
 	@RequestMapping("/movie")
-	public String movieShow(Model model) {
+	public String movieShow(Model model) { 
 
-		List<MovieInfoDTO> showList = ms.readMovie(1);
+		List<MovieInfoDTO> showList = ms.readMovie(1); // 현재 상영중인 영화 리스트를 불러옴 
 
-		List<MovieInfoDTO> scheduleList = ms.readMovie(0);
+		List<MovieInfoDTO> scheduleList = ms.readMovie(0); // 상영예정 영화 리스트를 불러옴
 
 		model.addAttribute("showList", showList);
 		model.addAttribute("scheduleList", scheduleList);
-
-		/* model.addAttribute("mno",1); */
+		// 구분해서 보여주기 위해 따로 담아냄
 
 		return "movie";
 	}

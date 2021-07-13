@@ -18,3 +18,4 @@ public class MovieInfoDTO {
    private String mintroduction;
    private String filmgrade;
 }
+// movie와 movie_detail 테이블을 natural join한 값을 담아주기 위해 만든 dto
