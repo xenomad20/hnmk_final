@@ -90,6 +90,6 @@ table {
 </div>
 
 </main>
-
+<%@ include file="/views/footer.jsp" %>
 </body>
 </html>
