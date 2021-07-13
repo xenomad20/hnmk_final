@@ -91,6 +91,7 @@ a {
 }
 #important a{
 	color: #ff0000;
+	font-weight: bold;
 }
 .notice_tit a{
 	color: #000;

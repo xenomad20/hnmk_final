@@ -94,7 +94,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<input type="button" value="취소" id="reset" />
+							<a href="notice.do"><input type="button" value="취소" id="reset" /></a>
 							<input type="submit" value="확인" id="ok"/>
 						</td>
 					</tr>
