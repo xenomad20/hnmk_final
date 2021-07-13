@@ -18,6 +18,5 @@ public class CommentDTO {
 	String mcregdate;
 	int customerno;
 	int mno;
-	String id;
 	String mtitle;
 }

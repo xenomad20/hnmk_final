@@ -91,10 +91,6 @@ public class MovieController {
 				String id = (String) obj;
 				model.addAttribute("id", obj);
 				// 코멘트작성하려할때 confilm창에서 취소를하면 현재 디테일페이지가보여줘야하기때문에
-<<<<<<< HEAD
-				// location.href 에 파라미터값 영화번호 를 추가해주기위한 변수
-=======
->>>>>>> branch 'master' of https://github.com/xenomad20/hnmk_final.git
 
 				// 코멘트작성하려할때 로그인은되어있는데 본인이 관람한 영화가아닐시에 불가
 

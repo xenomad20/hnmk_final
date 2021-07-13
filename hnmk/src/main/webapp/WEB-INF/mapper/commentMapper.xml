@@ -5,17 +5,12 @@
 
   <mapper namespace="kr.co.jhta.cinema">
      <select id="commentAll" parameterType="int" resultType="comedto">
-<<<<<<< HEAD
         SELECT mc.mcno, c.id, mc.mcgrade, mc.mccontents, mc.mcregdate, mc.customerno, mc.mno
         from mcomment mc, customer c
         where c.customerno = mc.customerno
-        and mc.mno = #{mno}
-=======
-        SELECT mcno, mcgrade, mccontents, mcregdate, customerno, mno 
-        from mcomment
-        where mno = #{mno}
->>>>>>> branch 'master' of https://github.com/xenomad20/hnmk_final.git
-     </select>
+        and mc.mno=#{mno}
+     </select> 
+
      
      <select id="commentOne" parameterType="map" resultType="comedto">
         SELECT mcno, mcgrade, mccontents, mcregdate, customerno, mno
