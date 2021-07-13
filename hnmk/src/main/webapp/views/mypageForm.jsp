@@ -303,7 +303,7 @@ li a:hover {
 										<th width="16% class="th">예매취소</th>
 									</tr>
 									<tr class="tr">
-										<td><img id="poster" src="${mdto.poster}" alt="" /></td>
+										<td><a href="detail?mno=${mdto.mno}"><img id="poster" src="${mdto.poster}" alt="" /></a> </td>
 										<td class="td" width="15%">${mdto.mtitle}</td>
 										<td class="td" width="16%">${rdto.ticketno}</td>
 										<td class="td" width="16%">${sdto.sname}</td>

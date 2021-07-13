@@ -52,6 +52,7 @@ public class ReserveController {
 			@RequestParam(value = "sname", required = false) String sname,
 			@RequestParam(value = "desc", required = false) String desc, HttpSession session) {
 		Object obj = session.getAttribute("id");
+		
 		if (obj != null) {	
 		String id= (String)obj;
 		if (cno != null) {
@@ -126,6 +127,7 @@ public class ReserveController {
 		ReserveDTO reserveCheck= rs.selectReserve(cdto.getCustomerno());
 		
 		model.addAttribute("reserveCheck", reserveCheck); //이미 티켓이있으면 예매불가
+		
 		return "reserveForm";
 		
 		}else{

@@ -30,7 +30,6 @@ public class CommentServiceImple implements CommentService{
 	@Override
 	public void insertOne(CommentDTO dto) {
 		dao.insertOne(dto);
-		
 	}
 
 }
