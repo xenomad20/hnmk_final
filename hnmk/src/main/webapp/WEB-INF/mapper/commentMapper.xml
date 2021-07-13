@@ -19,7 +19,7 @@
      </select>
      <insert id="cminsertOne" parameterType="comedto">
      	insert into mcomment(mcno, mcgrade, mccontents, mcregdate, customerno, mno)
-     	values(#{mcno}, #{mcgrade}, #{mccontents}, #{mcregdate}, #{customerno}, #{mno} )
+     	values(MCNO_SEQ.nextval, #{mcgrade}, #{mccontents}, sysdate, #{customerno}, #{mno} )
      	
      </insert>
   </mapper>
