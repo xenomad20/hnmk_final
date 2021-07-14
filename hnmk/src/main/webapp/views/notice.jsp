@@ -129,7 +129,7 @@
 							</tr>
 							</c:forEach>
 							<tr>
-						<!-- 페이지 넘버 -->
+													<!-- 페이지 넘버 -->
 							<td colspan="4"><c:if test="${prev1 }">
 									<a href="notice.do?currentPageNo=${currentPageNo1-1 }#tabs-2"><button class="numKey1">이전</button></a>
 								</c:if> <c:forEach var="no" begin="${startPageNo1 }" end="${endPageNo1 }">
